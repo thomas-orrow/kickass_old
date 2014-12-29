@@ -1,0 +1,189 @@
+@import url(reset.css);
+@import url(classic-black.css);
+/*Main footer setting*/
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+.main-wrapper {
+    min-height: 100%;
+}
+* html .main-wrapper {
+    height: 100%;
+}
+/*Main structure section*/
+.main-caption {
+	text-align: left;
+}
+.main-caption > div {
+	display: inline-block;
+        vertical-align: top;
+}
+.apps-menu {
+	display: inline-block;
+}
+.mt_menu {
+    position: absolute;
+}
+.main-caption span {
+	width: 100%;
+	display: inline-block;
+}
+.tabs-btn {
+	display: inline-block;
+}
+.tab-icons {
+	display: inline-block;
+	text-align: left;
+}
+.tab_bar ul {
+    text-align: center;
+}
+#tabs {
+	display: none;
+}
+.tab-name div {
+	display: none;
+}
+.toolbar ul {
+    width: 100%;
+}
+.toolbar ul li {
+    display: inline-block;
+}
+.more {
+    float: right;
+}
+.panel_container {
+    width: 100%;
+    text-align: center;
+}
+.panel_add {
+    display: inline-block;
+    width: 80%;
+    margin: 0 1% 0 1%;
+}
+.panel_find {
+    display: inline-block;
+    width: 80%;
+    margin: 0 1% 0 1%;
+}
+.tab-container {
+	display: table;
+	width: 100%;
+}
+.trow {
+	display: table-row;
+}
+.lem ,.rem , .cem {
+	display: table-cell;
+}
+.grid-container {
+	width: 100%;
+}
+/*End of main structure*/
+
+
+/*Responsible design section*/
+/*---Basic resolution from 320 to 799---*/
+.main-wrapper {
+    margin-bottom: 0px;
+}
+.main-placeholder {
+	height: 0px;
+}
+.main-footer {
+	display: none;
+}
+.main-caption {
+	height: 40px;
+}
+.tabs {
+	height: auto;
+}
+.lem, .rem {
+	width: 40px;
+}
+.toolbar {
+	display: none;
+}
+.search {
+	display: none;
+}
+.add {
+	display: none;
+}
+/*---From 780---*/
+@media screen and (min-width: 780px) {
+/*панельки в ряд*/
+.panel_add {
+    display: inline-block;
+    width: 40%;
+    margin: 0 1% 0 1%;
+}
+.panel_find {
+    display: inline-block;
+    width: 40%;
+    margin: 0 1% 0 1%;
+}
+/* Main footer ON */
+.main-wrapper {
+    margin-bottom: -40px;
+}
+.main-placeholder {
+	height: 40px;
+}
+.main-footer {
+	display: block;
+	min-height: 40px;
+}
+.footer-off {
+	float: right;
+}
+/*End of Footer ON*/
+.toolbar {
+	display: block;
+	height: auto;
+}
+.search {
+	display: block;
+	height: auto;
+}
+.add {
+	display: block;
+	height: auto;
+}
+}
+
+/*End of responsible design section*/
+
+/*---OFF section---*/
+
+/*Main footer OFF*/
+/*
+.main-wrapper {
+    margin-bottom: 0px;
+}
+.main-placeholder {
+	height: 0px;
+}
+.main-footer {
+	display: none;
+}
+*/
+/*End of footer OFF*/
+
+/*menu section*/
+.menu0, .menu1, .menu2, .menu3 {
+    display: none;
+}
+
+/*Пока без группы*/
+
+.user_block {
+    float: right;
+}
+.main_menu {
+    float: right;
+}

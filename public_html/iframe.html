@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script type="text/javascript">
+    var url = 'http://imho-design.ru/examples/cross-test.html';
+    function doCallOtherDomain(){
+        var XHR = window.XDomainRequest || window.XMLHttpRequest;
+        var xhr = new XHR();
+        xhr.open('GET', url, true);
+        // замена onreadystatechange
+        xhr.onload = function() {
+            document.getElementById('response').innerHTML = xhr.responseText;
+        };
+        xhr.onerror = function() {
+            alert("Error");
+        };
+        xhr.send();
+    }
+    function callOtherDomain() {
+        try {
+            doCallOtherDomain();
+        } catch (e) {
+            alert("В этом браузере данная фича не поддерживается.");
+        }
+    }
+</script>
+    </head>
+    <body>
+        <div id="response"></div>
+        <input type="button" value="Нажмите для запроса к другому домену" onclick="callOtherDomain()" />
+    </body>
+</html>
