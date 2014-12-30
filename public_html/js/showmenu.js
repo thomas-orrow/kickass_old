@@ -1,6 +1,6 @@
 $(document).ready(function(){
-    $('.menu_btn').bind('click', function() {
+    $('.menu-btn').on('click', function() {
         var mtGroup = $( this ).attr( 'data-group' );
-        $(".mt_menu[data-group='" +mtGroup+ "']").show();
+        $(".mt-menu[data-group='" +mtGroup+ "']").show();
     });
 });

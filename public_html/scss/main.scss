@@ -23,8 +23,11 @@ html, body {
 .apps-menu {
 	display: inline-block;
 }
-.mt_menu {
+.mt-menu {
     position: absolute;
+}
+.mt-menu li {
+    display: block;
 }
 .main-caption span {
 	width: 100%;
@@ -37,7 +40,7 @@ html, body {
 	display: inline-block;
 	text-align: left;
 }
-.tab_bar ul {
+.tab-bar ul {
     text-align: center;
 }
 #tabs {
@@ -55,16 +58,16 @@ html, body {
 .more {
     float: right;
 }
-.panel_container {
+.panel-container {
     width: 100%;
     text-align: center;
 }
-.panel_add {
+.panel-add {
     display: inline-block;
     width: 80%;
     margin: 0 1% 0 1%;
 }
-.panel_find {
+.panel-find {
     display: inline-block;
     width: 80%;
     margin: 0 1% 0 1%;
@@ -75,12 +78,6 @@ html, body {
 }
 .trow {
 	display: table-row;
-}
-.lem ,.rem , .cem {
-	display: table-cell;
-}
-.grid-container {
-	width: 100%;
 }
 /*End of main structure*/
 
@@ -102,12 +99,6 @@ html, body {
 .tabs {
 	height: auto;
 }
-.lem, .rem {
-	width: 40px;
-}
-.toolbar {
-	display: none;
-}
 .search {
 	display: none;
 }
@@ -117,12 +108,12 @@ html, body {
 /*---From 780---*/
 @media screen and (min-width: 780px) {
 /*панельки в ряд*/
-.panel_add {
+.panel-add {
     display: inline-block;
     width: 40%;
     margin: 0 1% 0 1%;
 }
-.panel_find {
+.panel-find {
     display: inline-block;
     width: 40%;
     margin: 0 1% 0 1%;
@@ -142,10 +133,6 @@ html, body {
 	float: right;
 }
 /*End of Footer ON*/
-.toolbar {
-	display: block;
-	height: auto;
-}
 .search {
 	display: block;
 	height: auto;
@@ -175,15 +162,15 @@ html, body {
 /*End of footer OFF*/
 
 /*menu section*/
-.menu0, .menu1, .menu2, .menu3 {
+.menu0, .menu1, .menu2, .menu3, .menu4 {
     display: none;
 }
 
 /*Пока без группы*/
 
-.user_block {
+.user-block {
     float: right;
 }
-.main_menu {
+.main-menu {
     float: right;
 }

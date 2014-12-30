@@ -1,0 +1,31 @@
+@import url(reset.css);
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: cyan; }
+
+.non-footer {
+  min-height: 100%; }
+
+* html .non-footer {
+  height: 100%; }
+
+.status-placeholder {
+  height: 0px; }
+
+.status-string {
+  display: none; }
+
+@media screen and (min-width: 200px) {
+  .non-footer {
+    margin-bottom: -20px; }
+
+  .status-placeholder {
+    height: 20px; }
+
+  .status-string {
+    display: block;
+    min-height: 20px; } }
+
+/*# sourceMappingURL=messages.css.map */

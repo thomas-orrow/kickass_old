@@ -2,7 +2,7 @@
 //Задаём переменные, что кликается первый раз ДЛЯ КАЖДОЙ выпадашки
 var firstClick = [true, true, true, true, true];
 //Если идет щелчок в любом месте на документе
-$( document ).bind( 'click.myEvent', function(e) {
+$( document ).on( 'click.myEvent', function(e) {
     for (var i = 0; i < firstClick.length; i++) {
         var menu = $('.menu'+i);
 //	то проверяем открыто ли меню
