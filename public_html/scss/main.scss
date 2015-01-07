@@ -1,3 +1,5 @@
+/*Вставить обрезание длины юзера в верхнем меню*/
+/*Если more нажал, то при клике в мессадж меню не скрывается*/
 @import url(reset.css);
 @import url(classic-black.css);
 /*Main footer setting*/
@@ -19,6 +21,8 @@ html, body {
 .main-caption > div {
 	display: inline-block;
         vertical-align: top;
+        margin-left: 10px;
+        margin-right: 10px;
 }
 .apps-menu {
 	display: inline-block;
@@ -73,14 +77,12 @@ html, body {
     margin: 0 1% 0 1%;
 }
 .tab-container {
-	display: table;
 	width: 100%;
 }
-.trow {
-	display: table-row;
+.message-box iframe {
+    display: block;
 }
 /*End of main structure*/
-
 
 /*Responsible design section*/
 /*---Basic resolution from 320 to 799---*/
@@ -88,59 +90,61 @@ html, body {
     margin-bottom: 0px;
 }
 .main-placeholder {
-	height: 0px;
+    height: 0px;
 }
 .main-footer {
-	display: none;
+    display: none;
 }
 .main-caption {
-	height: 40px;
+    height: 40px;
+    padding-top: 10px;
+    
 }
 .tabs {
-	height: auto;
+    height: auto;
 }
 .search {
-	display: none;
+    display: none;
 }
 .add {
-	display: none;
+    display: none;
 }
 /*---From 780---*/
 @media screen and (min-width: 780px) {
 /*панельки в ряд*/
-.panel-add {
-    display: inline-block;
-    width: 40%;
-    margin: 0 1% 0 1%;
-}
-.panel-find {
-    display: inline-block;
-    width: 40%;
-    margin: 0 1% 0 1%;
-}
-/* Main footer ON */
-.main-wrapper {
-    margin-bottom: -40px;
-}
-.main-placeholder {
-	height: 40px;
-}
-.main-footer {
-	display: block;
-	min-height: 40px;
-}
-.footer-off {
-	float: right;
-}
-/*End of Footer ON*/
-.search {
-	display: block;
-	height: auto;
-}
-.add {
-	display: block;
-	height: auto;
-}
+    .panel-add {
+        display: inline-block;
+        width: 40%;
+        margin: 0 1% 0 1%;
+    }
+    .panel-find {
+        display: inline-block;
+        width: 40%;
+        margin: 0 1% 0 1%;
+    }
+    /* Main footer ON */
+    .main-wrapper {
+        margin-bottom: -40px;
+    }
+    .main-placeholder {
+            height: 40px;
+    }
+    .main-footer {
+            display: block;
+            min-height: 40px;
+    }
+    .footer-off {
+            float: right;
+    }
+    /*End of Footer ON*/
+    .search {
+            display: block;
+            height: auto;
+    }
+    .add {
+            display: block;
+            height: auto;
+    }
 }
 
 /*End of responsible design section*/
@@ -162,7 +166,7 @@ html, body {
 /*End of footer OFF*/
 
 /*menu section*/
-.menu0, .menu1, .menu2, .menu3, .menu4 {
+.menu0, .menu1, .menu2, .menu3, .menu4, .menu5 {
     display: none;
 }
 

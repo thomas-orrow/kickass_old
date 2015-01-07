@@ -1,3 +1,16 @@
+function classifyWidth(measuredWidth) {
+    var textBorder = 600;
+    var mesBorder = 900;
+    if (measuredWidth < textBorder) {
+        return 1;
+    } else {
+        if (measuredWidth < mesBorder) {
+            return 2;
+        } else {
+            return 3;
+        }
+    }
+}
 var orderChanged = 'false';
 $(document).ready(function(){
     $('.message-call').on('click', function() {
@@ -20,21 +33,8 @@ $(document).ready(function(){
     });
 });
 $(document).ready(function(){
-    var textBorder = 600;
-    var mesBorder = 900;
     var docWindow = document.documentElement;
     var initialWidth = docWindow.clientWidth;
-    function classifyWidth(measuredWidth) {
-        if (measuredWidth < textBorder) {
-            return 1;
-        } else {
-            if (measuredWidth < mesBorder) {
-                return 2;
-            } else {
-                return 3;
-            }
-        }
-    }
     var initialRange = classifyWidth(initialWidth);
     $(window).resize(function(){
         if (orderChanged === 'true') {
@@ -51,8 +51,7 @@ $(document).ready(function(){
                     }
             }
             setTimeout(stopWidth, 500);
-        }
-        if (orderChanged === 'false') {
+        } else {
             var newWidth;
             var endWidth;
             newWidth = docWindow.clientWidth;
@@ -65,7 +64,7 @@ $(document).ready(function(){
                             }
                     }
             }
-            setTimeout(stopWidth, 500);
+            setTimeout(stWidth, 500);
         }
     });
 });
