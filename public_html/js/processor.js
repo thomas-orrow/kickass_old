@@ -1,28 +1,31 @@
-// определение глобальных переменных
-var width1 = 600; // первая граница адаптивки, до которой показывается одна колонка
-var width2 = 900; // вторая граница адаптивки, до которой показывается две колонки
-var initialHeight;
-var currentHeight;
-var initialWidth;
-var currentWidth;
-var intitialColumns;
-var currentColumns;
-var intitialStatus;
-var currentStatus;
-var myWindow = document.documentElement;
+// Global variables
+var Vars = new Object();
+Vars.width1 = 600; // первая граница адаптивки, до которой показывается одна колонка
+Vars.width2 = 900; // вторая граница адаптивки, до которой показывается две колонки
+Vars.delay = 100; //задержка при перерисовке
+Vars.initialHeight;
+Vars.currentHeight;
+Vars.initialWidth;
+Vars.currentWidth;
+Vars.initialColumns;
+Vars.currentColumns;
+Vars.initialStatus;
+Vars.currentStatus;
+Vars.myWindow = document.documentElement;
+Vars.markRector = 3; //амплитуда колебания
+Vars.markStopIt = 0;
+Vars.markA = 1;
+Vars.shakeCounter = 1;
+var Shake = new Object();
 var GridList = new Object();
 var MessagesList = new Object();
-var markRector = 3; //амплитуда колебания
-var markStopIt = 0;
-var markA = 1;
-var shakeCounter = 1;
-var shake = new Object();
-// функция определения стартового состояния приложения
+var Toolbar = new Object();
+// Column pcs
 function classifyWidth(measuredWidth) {
-    if (measuredWidth < width1) {
+    if (measuredWidth < Vars.width1) {
         return 1;
     } else {
-        if (measuredWidth < width2) {
+        if (measuredWidth < Vars.width2) {
             return 2;
         } else {
             return 3;
@@ -32,18 +35,17 @@ function classifyWidth(measuredWidth) {
 function iniStat(startColumns) {
     switch (startColumns) {
         case 1:
-            initialStatus = 1;
+            Vars.initialStatus = 1;
             break;
         case 2:
-            initialStatus = 4;
+            Vars.initialStatus = 4;
             break;
         case 3:
-            initialStatus = 7;
+            Vars.initialStatus = 7;
             break;
     }
-    return initialStatus;
+    return Vars.initialStatus;
 }
-//высота футера
 function footerSize() {
     var footerShow = $('.main-footer').css('display');
     if (footerShow === 'block') {
@@ -53,7 +55,6 @@ function footerSize() {
     }
     return footerSize;
 }
-//высота контейнера
 function newSizeOfContainer() {
     var sizeOfHead = $('.main-caption').outerHeight(true);
     var sizeOfTabs = $('.tab-bar').outerHeight(true);
@@ -62,13 +63,180 @@ function newSizeOfContainer() {
     var sizeOfFooter = footerSize();
     var sizeOfInterface = sizeOfHead + sizeOfTabs + sizeOfToolbar + sizeOfPanels + sizeOfFooter;
     var sizeOfBody = $('body').outerHeight(true); //зачем это надо?
-    var sizeOfContainer = myWindow.clientHeight - sizeOfInterface;
+    var sizeOfContainer = Vars.myWindow.clientHeight - sizeOfInterface;
     return sizeOfContainer;
 }
-//ФУНКЦИЯ ОБЩЕНИЯ ПО AJAX (получение данных)
-function requestCommutator(fname, firstArg) {
+// AJAX
+function requestCommutator(fname, firstArg, secondArg) {
     switch (fname) {
         case 'getList':
+            //firstArg содержит имя вкладки, secondArc - номер страницы
+            switch (firstArg) {
+                case  'inbox':
+            GridList =  {
+                    "352": {
+                        "priority": "high",
+                        "subj": "Только что поставленная прочитанная важная задача с кучей переписки",
+                        "read": true,
+                        "status": "acquaintance",
+                        "overdue": null,
+                        "archive": false,
+                        "from": "username1",
+                        "to": "username2",
+                        "envelope": "1025",
+                        "flag": false,
+                        "files": {
+                            "1234": {
+                                "filename": "file1.doc",
+                                "fileurl": "http://domain.com/file1.doc"
+                            },
+                            "5637": {
+                                "filename": "file2.doc",
+                                "fileurl": "http://domain.com/file2.doc"
+                            },
+                            "5639": {
+                                "filename": "file3.doc",
+                                "fileurl": "http://domain.com/file3.doc"
+                            }
+                        }
+                    },
+                    "444": {
+                        "priority": "urgent",
+                        "subj": "Выполняемая срочная непрочитанная задача",
+                        "read": false,
+                        "status": "accepted",
+                        "overdue": null,
+                        "archive": false,
+                        "from": "username1",
+                        "to": "username2",
+                        "envelope": "2", 
+                        "flag": true,
+                        "files": false
+                    },
+                    "447": {
+                        "priority": "normal",
+                        "subj": "Выполняемая обычная прочитанная задача",
+                        "read": true,
+                        "status": "accepted",
+                        "overdue": null,
+                        "archive": false,
+                        "from": "username1",
+                        "to": "username2",
+                        "envelope": "0", 
+                        "flag": false,
+                        "files": false
+                    },
+                    "448": {
+                        "priority": "extra",
+                        "subj": "Выполняемая авральная прочитанная задача",
+                        "read": true,
+                        "status": "accepted",
+                        "overdue": false,
+                        "archive": false,
+                        "from": "username1",
+                        "to": "username2",
+                        "envelope": "0", 
+                        "flag": false,
+                        "files": false
+                    },
+                    "449": {
+                        "priority": "low",
+                        "subj": "Выполняемая маловажная прочитанная задача",
+                        "read": true,
+                        "status": "accepted",
+                        "overdue": null,
+                        "archive": false,
+                        "from": "username1",
+                        "to": "username2",
+                        "envelope": "0", 
+                        "flag": false,
+                        "files": false
+                    },
+                    "445": {
+                        "priority": "low",
+                        "subj": "Отклоненная неважная прочитанная задача, край которой красиво исчезает",
+                        "read": true,
+                        "status": "rejected",
+                        "overdue": false,
+                        "archive": false,
+                        "from": "username1",
+                        "to": "username2",
+                        "envelope": "0", 
+                        "flag": false,
+                        "files": false
+                    },
+                    "446": {
+                        "priority": "normal",
+                        "subj": "Выполненная обычная непрочитанная задача, которую надо проверить и у которой очень длинное название, которое не влезет в поле...",
+                        "read": false,
+                        "status": "completed",
+                        "overdue": false,
+                        "archive": false,
+                        "from": "username1",
+                        "to": "username2",
+                        "envelope": "1", 
+                        "flag": false,
+                        "files": false
+                    }
+                };
+                break;
+            case 'archive':
+            GridList =  {
+                    "461": {
+                        "priority": "normal",
+                        "subj": "Обычная непрочитанная неутвержденная старая задача",
+                        "read": false,
+                        "status": "completed",
+                        "overdue": null,
+                        "archive": true,
+                        "from": "username1",
+                        "to": "username2",
+                        "envelope": "0",
+                        "flag": false,
+                        "files": false
+                    },
+                    "463": {
+                        "priority": "normal",
+                        "subj": "Обычная прочитанная утвержденная старая задача",
+                        "read": true,
+                        "status": "approved",
+                        "overdue": null,
+                        "archive": true,
+                        "from": "username1",
+                        "to": "username2",
+                        "envelope": "0",
+                        "flag": false,
+                        "files": false
+                    },
+                    "462": {
+                        "priority": "high",
+                        "subj": "Важная прочитанная и утвержденная старая задача",
+                        "read": true,
+                        "status": "approved",
+                        "overdue": true,
+                        "archive": true,
+                        "from": "username1",
+                        "to": "username2",
+                        "envelope": "0",
+                        "flag": false,
+                        "files": false
+                    },
+                    "464": {
+                        "priority": "urgent",
+                        "subj": "Срочная непрочитанная и утвержденная старая задача",
+                        "read": false,
+                        "status": "approved",
+                        "overdue": true,
+                        "archive": true,
+                        "from": "username1",
+                        "to": "username2",
+                        "envelope": "0",
+                        "flag": false,
+                        "files": false
+                    }
+                };
+                break;
+            default:
             GridList =  {
                     "352": {
                         "priority": "high",
@@ -227,6 +395,8 @@ function requestCommutator(fname, firstArg) {
                         "files": false
                     }
                 };
+                break;
+        }
             return GridList;
             break;
         case 'getText':
@@ -300,6 +470,292 @@ function requestCommutator(fname, firstArg) {
             };
             return MessagesList[mesId];
             break;
+            case 'toolbar':
+                Toolbar = {
+                    "unfocus": {
+                        "new": {
+                            "order": 0,
+                            "text": "501",
+                            "icon": "toolbar-new.png",
+                            "function": "addTask();"
+                        }
+                    },
+                    "archived": {
+                        "return": {
+                            "order": 0,
+                            "text": "514",
+                            "icon": "toolbar-return.png",
+                            "function": "returnTask(currentId);"
+                        }
+                    },
+                    "deleted": {
+                        "return": {
+                            "order": 0,
+                            "text": "515",
+                            "icon": "toolbar-restore.png",
+                            "function": "restoreTask(currentId);"
+                        }
+                    },
+                    "usual": {
+                        "sender": {
+                            "new": {
+                                "order": 1,
+                                "text": "501",
+                                "icon": "toolbar-new.png",
+                                "function": "addTask();"
+                            },
+                            "edit": {
+                                "order": 2,
+                                "text": "502",
+                                "icon": "toolbar-edit.png",
+                                "function": "editTask(currentId);"
+                            },
+                            "complete": {
+                                "order": 3,
+                                "text": "508",
+                                "icon": "toolbar-complete.png",
+                                "function": "completeTask(currentId);"
+                            },
+                            "revoke": {
+                                "order": 4,
+                                "text": "503",
+                                "icon": "toolbar-cancel.png",
+                                "function": "cancelTask(currentId);"
+                            },
+                            "delete": {
+                                "order": 5,
+                                "text": "505",
+                                "icon": "toolbar-delete.png",
+                                "function": "deleteTask(currentId);"
+                            },
+                            "archive": {
+                                "order": 6,
+                                "text": "504",
+                                "icon": "toolbar-archive.png",
+                                "function": "archiveTask(currentId);"
+                            }
+                        },
+                        "receiver": {
+                            "new": {
+                                "order": 1,
+                                "text": "501",
+                                "icon": "toolbar-new.png",
+                                "function": "addTask();"
+                            },
+                            "begin": {
+                                "order": 2,
+                                "text": "506",
+                                "icon": "toolbar-begin.png",
+                                "function": "beginTask(currentId);"
+                            },
+                            "reject": {
+                                "order": 3,
+                                "text": "507",
+                                "icon": "toolbar-reject.png",
+                                "function": "cancelTask(currentId);"
+                            },
+                            "complete": {
+                                "order": 4,
+                                "text": "508",
+                                "icon": "toolbar-complete.png",
+                                "function": "completeTask(currentId);"
+                            }
+                        }
+                    },
+                    "rejected": {
+                        "sender": {
+                            "new": {
+                                "order": 1,
+                                "text": "501",
+                                "icon": "toolbar-new.png",
+                                "function": "addTask();"
+                            },
+                            "edit": {
+                                "order": 2,
+                                "text": "502",
+                                "icon": "toolbar-edit.png",
+                                "function": "editTask(currentId);"
+                            },
+                            "complete": {
+                                "order": 3,
+                                "text": "508",
+                                "icon": "toolbar-complete.png",
+                                "function": "completeTask(currentId);"
+                            },
+                            "force": {
+                                "order": 4,
+                                "text": "509",
+                                "icon": "toolbar-force.png",
+                                "function": "forceTask(currentId);"
+                            },
+                            "delete": {
+                                "order": 5,
+                                "text": "505",
+                                "icon": "toolbar-delete.png",
+                                "function": "deleteTask(currentId);"
+                            },
+                            "archive": {
+                                "order": 6,
+                                "text": "504",
+                                "icon": "toolbar-archive.png",
+                                "function": "archiveTask(currentId);"
+                            }
+                        },
+                        "receiver": {
+                            "new": {
+                                "order": 1,
+                                "text": "501",
+                                "icon": "toolbar-new.png",
+                                "function": "addTask();"
+                            },
+                            "force": {
+                                "order": 2,
+                                "text": "509",
+                                "icon": "toolbar-force.png",
+                                "function": "forceTask(currentId);"
+                            },
+                            "begin": {
+                                "order": 3,
+                                "text": "506",
+                                "icon": "toolbar-begin.png",
+                                "function": "beginTask(currentId);"
+                            },
+                            "complete": {
+                                "order": 4,
+                                "text": "508",
+                                "icon": "toolbar-complete.png",
+                                "function": "completeTask(currentId);"
+                            }
+                        }
+                    },
+                    "processed": {
+                        "sender": {
+                            "new": {
+                                "order": 1,
+                                "text": "501",
+                                "icon": "toolbar-new.png",
+                                "function": "addTask();"
+                            },
+                            "complete": {
+                                "order": 2,
+                                "text": "508",
+                                "icon": "toolbar-complete.png",
+                                "function": "completeTask(currentId);"
+                            },
+                            "revoke": {
+                                "order": 3,
+                                "text": "503",
+                                "icon": "toolbar-cancel.png",
+                                "function": "cancelTask(currentId);"
+                            },
+                            "archive": {
+                                "order": 4,
+                                "text": "504",
+                                "icon": "toolbar-archive.png",
+                                "function": "archiveTask(currentId);"
+                            }
+                        },
+                        "receiver": {
+                            "new": {
+                                "order": 1,
+                                "text": "501",
+                                "icon": "toolbar-new.png",
+                                "function": "addTask();"
+                            },
+                            "complete": {
+                                "order": 2,
+                                "text": "508",
+                                "icon": "toolbar-complete.png",
+                                "function": "completeTask(currentId);"
+                            },
+                            "stop": {
+                                "order": 3,
+                                "text": "510",
+                                "icon": "toolbar-stop.png",
+                                "function": "stopTask(currentId);"
+                            },
+                            "reject": {
+                                "order": 4,
+                                "text": "507",
+                                "icon": "toolbar-reject.png",
+                                "function": "cancelTask(currentId);"
+                            }
+                        }
+                    },
+                    "completed": {
+                        "sender": {
+                            "new": {
+                                "order": 1,
+                                "text": "501",
+                                "icon": "toolbar-new.png",
+                                "function": "addTask();"
+                            },
+                            "confirm": {
+                                "order": 2,
+                                "text": "511",
+                                "icon": "toolbar-confirm.png",
+                                "function": "confirmTask(currentId);"
+                            },
+                            "redo": {
+                                "order": 3,
+                                "text": "512",
+                                "icon": "toolbar-redo.png",
+                                "function": "redoTask(currentId);"
+                            },
+                            "archive": {
+                                "order": 4,
+                                "text": "504",
+                                "icon": "toolbar-archive.png",
+                                "function": "archiveTask(currentId);"
+                            }
+                        },
+                        "receiver": {
+                            "new": {
+                                "order": 1,
+                                "text": "501",
+                                "icon": "toolbar-new.png",
+                                "function": "addTask();"
+                            },
+                            "redo": {
+                                "order": 2,
+                                "text": "512",
+                                "icon": "toolbar-redo.png",
+                                "function": "redoTask(currentId);"
+                            }
+                        }
+                    },
+                    "confirmed": {
+                        "sender": {
+                            "new": {
+                                "order": 1,
+                                "text": "501",
+                                "icon": "toolbar-new.png",
+                                "function": "addTask();"
+                            },
+                            "notconfirm": {
+                                "order": 2,
+                                "text": "513",
+                                "icon": "toolbar-notconfirm.png",
+                                "function": "notconfirmTask(currentId);"
+                            },
+                            "archive": {
+                                "order": 3,
+                                "text": "504",
+                                "icon": "toolbar-archive.png",
+                                "function": "archiveTask(currentId);"
+                            }
+                        },
+                        "receiver": {
+                            "new": {
+                                "order": 1,
+                                "text": "501",
+                                "icon": "toolbar-new.png",
+                                "function": "addTask();"
+                            }
+                        }
+                    }
+                };
+                break;
     }
 }
 function getSubject(recordId) {
@@ -322,7 +778,6 @@ function showGrid(tabName, pageNumber) {
     var flagIcon;
     var clipIcon;
     var enveIcon;
-    $('.grid-box').empty();
     for (var key in GridList) {
         switch (GridList[key].archive) {
             case true:
@@ -427,7 +882,6 @@ function showGrid(tabName, pageNumber) {
         $('.grid-box').append(lineCode);
     }
 }
-
 function showMessages(recId) {
     var mesCode = '';
     var to;
@@ -469,88 +923,74 @@ function showMessages(recId) {
     $('.messages-list').empty();
     $('.messages-list').append(mesCode);
 }
-
-//Функция замены маркера текстом
 function txtAdd() {
     $('.txt').each(function() {
         var txtId = $(this).attr('data-txtid');
         $(this).append(Text[txtId]);
     });
 }
-
-//ИНИЦИАЛИЗАЦИЯ ОКНА
-$(document).ready(function(){
-    // меряем размеры загруженного окна
-    initialHeight = myWindow.clientHeight;
-    currentHeight = initialHeight;
-    initialWidth = myWindow.clientWidth;
-    currentWidth = initialWidth;
-    initialColumns = classifyWidth(initialWidth);
-    currentColumns = initialColumns;
-    initialStatus = iniStat(initialColumns);
-    currentStatus = initialStatus;
-    requestCommutator('getList'); //тестовый вызов при старте, чтобы получить массив
+function showInbox() {
+    requestCommutator('getList', 'inbox', 1); //тестовый вызов при старте, чтобы получить массив
     // заполнение строками
     showGrid('inbox', 1);
-    txtAdd();
-    //добавить размещение пейджинга
-});
-//Функция ховера картинки
+    $('[tab-id="inbox"]').attr('tab-active','true');
+}
+// Rattle hover function
 function rattleInit(which){
-    markStopIt = 0;
-    shake = which;
-    $(shake).css('left', 0);
-    $(shake).css('top', 0);
+    Vars.markStopIt = 0;
+    Shake = which;
+    $(Shake).css('left', 0);
+    $(Shake).css('top', 0);
 }
 function rattleImage(){
     var markTop;
     var markLeft;
-    if ((!document.all && !document.getElementById) || markStopIt === 1 || shakeCounter > 3) {
+    if ((!document.all && !document.getElementById) || Vars.markStopIt === 1 || Vars.shakeCounter > 3) {
         return;
     }
-    switch (markA) {
+    switch (Vars.markA) {
         case 1:
-            markTop = parseInt($(shake).css('top')) + markRector;
-            $(shake).css('top',markTop);
+            markTop = parseInt($(Shake).css('top')) + Vars.markRector;
+            $(Shake).css('top',markTop);
             break;
         case 2:
-            markLeft = parseInt($(shake).css('left')) + markRector;
-            $(shake).css('left',markLeft); 
+            markLeft = parseInt($(Shake).css('left')) + Vars.markRector;
+            $(Shake).css('left',markLeft); 
             break;
         case 3:
-            markTop = parseInt($(shake).css('top')) - markRector;
-            $(shake).css('top',markTop);
+            markTop = parseInt($(Shake).css('top')) - Vars.markRector;
+            $(Shake).css('top',markTop);
             break;
         default:
-            markLeft = parseInt($(shake).css('left')) - markRector;
-            $(shake).css('left',markLeft); 
+            markLeft = parseInt($(Shake).css('left')) - Vars.markRector;
+            $(Shake).css('left',markLeft); 
             break;
     }
-    if (markA < 4) {
-        markA++;
+    if (Vars.markA < 4) {
+        Vars.markA++;
     } else {
-        markA = 1;
-        shakeCounter++;
+        Vars.markA = 1;
+        Vars.shakeCounter++;
     }
     setTimeout(rattleImage, 50);
 }
 function stopRattle(which){
-    markStopIt = 1;
-    shakeCounter = 1;
+    Vars.markStopIt = 1;
+    Vars.shakeCounter = 1;
     $(which).css('left',0);
     $(which).css('top',0);
 }
-$(document).ready(function() {
-    $('.mark').mouseover(function() {
+function startRattle() {
+    $('.grid-box').on('mouseover','.mark',function() {
         rattleInit(this);
         rattleImage();
     });
-    $('.mark').mouseout(function() {
+    $('.grid-box').on('mouseout','.mark',function() {
         stopRattle(this);
     });
-});
-$(document).ready(function(){
-// первичная отстройка гридов по высоте
+}
+// Height setting
+function setInitialHeight() {
     var newSize = newSizeOfContainer();
     $(".tab-container").height(newSize);
     $(".grid-box").height(newSize);
@@ -560,8 +1000,11 @@ $(document).ready(function(){
     $(".message-remove").height(newSize);
     var mesSize = newSize - $('.block-caption').outerHeight(true) - $('.messages-toolbar').outerHeight(true) - $('.message-add').outerHeight(true);
     $(".messages-list").height(mesSize);
-//ФУНКЦИИ СМЕН СТАТУСОВ БЕЗ РЕСАЙЗА (щелчки по кнопкам)
-    $('.grid-line').on('click', function(f) { // проверить, можно ли фокус или писать неповторный клик
+}
+//STATUS functions:
+// Subject click
+function clickSubject() {
+    $('.grid-box').on('click','.grid-line', function(f) {
         var isActive = $( this ).attr( 'data-active' );
         // сначала проверяем активна ли строка
         if ( isActive === 'false' ) {
@@ -577,7 +1020,7 @@ $(document).ready(function(){
             showMessages(currentId); //в любом случае показываем сообщения хоть и на заднем плане
         }
 // функция перехода со статуса 1 на статус 2 (открытие рекорда в одноколоночном варианте)
-        if ((currentStatus === 1 || currentStatus === 2 || currentStatus === 3) && ($(f.target).closest('.envelope').length === 0) && ($(f.target).closest('.clip').length === 0) && ($(f.target).closest('.flag').length === 0) ) {
+        if ((Vars.currentStatus === 1 || Vars.currentStatus === 2 || Vars.currentStatus === 3) && ($(f.target).closest('.envelope').length === 0) && ($(f.target).closest('.clip').length === 0) && ($(f.target).closest('.flag').length === 0) ) {
             $('.message-box').hide();
             $('.grid-box').hide();
             $('.message-remove').hide();
@@ -587,17 +1030,17 @@ $(document).ready(function(){
             $('.message-call').css('display', 'inline-block');
 //            var currentId = $( this ).attr( 'id' ); // получаем id текущей строки
 //            showMessages(currentId);
-            currentStatus = 2;
+            Vars.currentStatus = 2;
         }
 // функция перехода со статуса 5 на статус 4 (закрытие сообщений и возврат к списку с текстом в двухколоночном варианте)
-        if ((currentStatus === 5) && ($(f.target).closest('.envelope').length === 0) && ($(f.target).closest('.clip').length === 0) && ($(f.target).closest('.flag').length === 0) ) {
+        if ((Vars.currentStatus === 5) && ($(f.target).closest('.envelope').length === 0) && ($(f.target).closest('.clip').length === 0) && ($(f.target).closest('.flag').length === 0) ) {
             $('.message-box').hide();
             $('.message-remove').hide();
             $('.record-box').show();
             $('.record-box').css('display', 'inline-block');
             $('.message-call').show();
             $('.message-call').css('display', 'inline-block');
-            currentStatus = 4;
+            Vars.currentStatus = 4;
         }
 // функция перехода со статуса 4 на статус 4 (просто открытие сообщения)
 //        if ((currentStatus === 4) && ($(f.target).closest('.envelope').length === 0) && ($(f.target).closest('.clip').length === 0) && ($(f.target).closest('.flag').length === 0) ) {
@@ -605,12 +1048,14 @@ $(document).ready(function(){
 //            showMessages(currentId);
 //        }
     });
-//клик на КОНВЕРТЕ
-    $('.envelope').on('click', function() {
+}
+//Envelope click
+function clickEnvelope() {
+    $('.grid-box').on('click','.envelope', function() {
         var recId = $(this).parents('.grid-line:first').attr('id');
         showMessages(recId);
 // функция перехода со статуса 1 на статус 3 (открытие сообщений из списка в одноколоночном варианте)
-        if (currentStatus === 1) {
+        if (Vars.currentStatus === 1) {
             $('.grid-box').hide();
             $('.record-box').hide();
             $('.message-call').hide();
@@ -618,88 +1063,98 @@ $(document).ready(function(){
             $('.message-remove').css('display', 'inline-block');
             $('.message-box').show();
             $('.message-box').css('display', 'inline-block');
-            currentStatus = 3;
+            Vars.currentStatus = 3;
         }
 // функция перехода со статуса 4 на статус 5 (открытие сообщений из списка в двухколоночном варианте)
-        if (currentStatus === 4) {
+        if (Vars.currentStatus === 4) {
             $('.record-box').hide();
             $('.message-call').hide();
             $('.message-remove').show();
             $('.message-remove').css('display', 'inline-block');
             $('.message-box').show();
             $('.message-box').css('display', 'inline-block');
-            currentStatus = 5;
+            Vars.currentStatus = 5;
         }
     });
-//клик на крест у рекорда
-    $('.record-close').on('click', function() {
-// функция перехода со статуса 2 на статус 1 (закрытие рекорда в одноколоночном варианте)
-        if (currentStatus === 2) {
-            $('.record-box').hide();
-            $('.message-call').hide();
-            $('.grid-box').show();
-            $('.grid-box').css('display', 'inline-block');
-            currentStatus = 1;
-        }
-    });
+}
+//Message call click
+function clickMessagesCall() {
 //клик на вызов сообщений из текста задачи
 //функция перехода со статуса 2 на статус 3 (открытие сообщений из рекорда в одноколоночном варианте)
     $('.message-call').on('click', function() {
-        if (currentStatus === 2) {
+        if (Vars.currentStatus === 2) {
             $('.record-box').hide();
             $('.message-call').hide();
             $('.message-remove').show();
             $('.message-remove').css('display', 'inline-block');
             $('.message-box').show();
             $('.message-box').css('display', 'inline-block');
-            currentStatus = 3;
+            Vars.currentStatus = 3;
         }
 //функция перехода со статуса 4 на статус 5 (открытие сообщений из рекорда в двухколоночном варианте)
-        if (currentStatus === 4) {
+        if (Vars.currentStatus === 4) {
             $('.record-box').hide();
             $('.message-call').hide();
             $('.message-remove').show();
             $('.message-remove').css('display', 'inline-block');
             $('.message-box').show();
             $('.message-box').css('display', 'inline-block');
-            currentStatus = 5;
+            Vars.currentStatus = 5;
         }
     });
+}
+//Message remove click
+function clickMessagesRemove() {
 // клик на скрытие сообщений (не на крест)
     $('.message-remove').on('click', function() {
 // функция перехода со статуса 3 на статус 2 (возврат к рекорду из сообщений в одноколоночном варианте)
-        if (currentStatus === 3) {
+        if (Vars.currentStatus === 3) {
             $('.message-remove').hide();
             $('.message-box').hide();
             $('.record-box').show();
             $('.record-box').css('display', 'inline-block');
             $('.message-call').show();
             $('.message-call').css('display', 'inline-block');
-            currentStatus = 2;
+            Vars.currentStatus = 2;
         }
 // функция перехода со статуса 5 на статус 4 (возврат к рекорду из сообщений в двухколоночном варианте)
-        if (currentStatus === 5) {
+        if (Vars.currentStatus === 5) {
             $('.message-remove').hide();
             $('.message-box').hide();
             $('.record-box').show();
             $('.record-box').css('display', 'inline-block');
             $('.message-call').show();
             $('.message-call').css('display', 'inline-block');
-            currentStatus = 4;
+            Vars.currentStatus = 4;
         }
     });
-//клик на крест у сообщений
+}
+//Record cross click
+function clickRecordCross() {
+    $('.record-close').on('click', function() {
+// функция перехода со статуса 2 на статус 1 (закрытие рекорда в одноколоночном варианте)
+        if (Vars.currentStatus === 2) {
+            $('.record-box').hide();
+            $('.message-call').hide();
+            $('.grid-box').show();
+            $('.grid-box').css('display', 'inline-block');
+            Vars.currentStatus = 1;
+        }
+    });
+}
+//Message cross click
+function clickMessageCross() {
     $('.message-close').on('click', function() {
 // функция перехода со статуса 3 на статус 1 (закрытие сообщений и возврат к списку в одноколоночном варианте)
-        if (currentStatus === 3) {
+        if (Vars.currentStatus === 3) {
             $('.message-box').hide();
             $('.message-remove').hide();
             $('.grid-box').show();
             $('.grid-box').css('display', 'inline-block');
-            currentStatus = 1;
+            Vars.currentStatus = 1;
         }
 // функция перехода со статуса 5 на статус 4 (закрытие сообщений и возврат к списку в одноколоночном варианте)
-        if (currentStatus === 5) {
+        if (Vars.currentStatus === 5) {
             $('.message-box').hide();
             $('.message-remove').hide();
             $('.record-box').show();
@@ -708,79 +1163,61 @@ $(document).ready(function(){
             $('.grid-box').css('display', 'inline-block');
             $('.message-call').show();
             $('.message-call').css('display', 'inline-block');
-            currentStatus = 4;
+            Vars.currentStatus = 4;
         }
     });
-//функция ресайза и смены статусов - временно выключена !!!!!!
+}
+//Horizontal resize
+function resizeWidth() {
     $(window).resize(function(){
             var newWidth;
             var endWidth;
-            newWidth = myWindow.clientWidth;
+            newWidth = Vars.myWindow.clientWidth;
             function stopWidth() {
-                endWidth = myWindow.clientWidth;
+                endWidth = Vars.myWindow.clientWidth;
                     if (endWidth === newWidth) {
                         var endColumns = classifyWidth(endWidth);
-                            if (endColumns !== currentColumns) {
+                            if (endColumns !== Vars.currentColumns) {
 // здесь все варианты смены статусов и перерисовки
-                                //
-                                switch (currentColumns) {
+                                switch (Vars.currentColumns) {
                                     case 1: //было 1
                                         switch (endColumns) {
                                             //стало 2
                                             case 2:
-                                                switch (currentStatus) {
+                                                switch (Vars.currentStatus) {
                                                     //был статус 1
                                                     case 1:
                                                         $('.record-box').show();
                                                         $('.record-box').css('display', 'inline-block');
                                                         $('.message-call').show();
                                                         $('.message-call').css('display', 'inline-block');
-                                                        currentStatus = 4;
+                                                        Vars.currentStatus = 4;
                                                         break;
                                                     //был статус 2
                                                     case 2:
                                                         $('.grid-box').show();
                                                         $('.grid-box').css('display', 'inline-block');
-                                                        currentStatus = 4;
+                                                        Vars.currentStatus = 4;
                                                         break;
                                                     //был статус 3
                                                     case 3:
                                                         $('.grid-box').show();
                                                         $('.grid-box').css('display', 'inline-block');
-                                                        currentStatus = 5;
+                                                        Vars.currentStatus = 5;
                                                         break;
                                                 }
                                                 break;
                                             //стало 3
                                             case 3:
-                                                switch (currentStatus) {
-                                                    //был статус 1
-                                                    case 1:
-                                                        $('.record-box').show();
-                                                        $('.record-box').css('display', 'inline-block');
-                                                        $('.message-box').show();
-                                                        $('.message-box').css('display', 'inline-block');
-                                                        currentStatus = 7;
-                                                        break;
-                                                    //был статус 2
-                                                    case 2:
-                                                        $('.grid-box').show();
-                                                        $('.grid-box').css('display', 'inline-block');
-                                                        $('.message-call').hide();
-                                                        $('.message-box').show();
-                                                        $('.message-box').css('display', 'inline-block');
-                                                        currentStatus = 7;
-                                                        break;
-                                                    //был статус 3
-                                                    case 3:
-                                                        $('.grid-box').show();
-                                                        $('.grid-box').css('display', 'inline-block');
-                                                        $('.message-remove').hide();
-                                                        $('.record-box').show();
-                                                        $('.record-box').css('display', 'inline-block');
-                                                        currentStatus = 7;
-                                                        break;
-                                                }
+                                                $('.grid-box').show();
+                                                $('.grid-box').css('display', 'inline-block');
+                                                $('.record-box').show();
+                                                $('.record-box').css('display', 'inline-block');
+                                                $('.message-box').show();
+                                                $('.message-box').css('display', 'inline-block');
+                                                $('.message-call').hide();
+                                                $('.message-remove').hide();
+                                                Vars.currentStatus = 7;
                                                 break;
                                         }
                                         break;
@@ -788,10 +1225,10 @@ $(document).ready(function(){
                                         switch (endColumns) {
                                         //стало 1
                                         case 1:
-                                            switch (currentStatus) {
+                                            switch (Vars.currentStatus) {
                                                 //был статус 4
                                                 case 4:
-                                                    currentStatus = 1;
+                                                    Vars.currentStatus = 1;
                                                     break;
                                                 //был статус 5
                                                 case 5:
@@ -800,34 +1237,21 @@ $(document).ready(function(){
                                                     $('.message-remove').css('display', 'inline-block');
                                                     $('.message-box').show();
                                                     $('.message-box').css('display', 'inline-block');
-                                                    currentStatus = 3;
+                                                    Vars.currentStatus = 3;
                                                     break;
                                             }
                                             break;
                                         //стало 3
                                         case 3:
-                                            switch (currentStatus) {
-                                                //был статус 4
-                                                case 4:
-                                                    $('.message-remove').hide();
-                                                    $('.message-call').hide();
-                                                    $('.message-box').show();
-                                                    $('.message-box').css('display', 'inline-block');
-                                                    $('.record-box').show();
-                                                    $('.record-box').css('display', 'inline-block');
-                                                    currentStatus = 7;
-                                                    break;
-                                                //был статус 5
-                                                case 5:
-                                                    $('.message-remove').hide();
-                                                    $('.message-call').hide();
-                                                    $('.message-box').show();
-                                                    $('.message-box').css('display', 'inline-block');
-                                                    $('.record-box').show();
-                                                    $('.record-box').css('display', 'inline-block');
-                                                    currentStatus = 7;
-                                                    break;
-                                            }
+                                            $('.grid-box').show();
+                                            $('.grid-box').css('display', 'inline-block');
+                                            $('.record-box').show();
+                                            $('.record-box').css('display', 'inline-block');
+                                            $('.message-box').show();
+                                            $('.message-box').css('display', 'inline-block');
+                                            $('.message-call').hide();
+                                            $('.message-remove').hide();
+                                            Vars.currentStatus = 7;
                                             break;
                                         }
                                         break;
@@ -839,7 +1263,7 @@ $(document).ready(function(){
                                                 $('.message-remove').hide();
                                                 $('.message-call').show();
                                                 $('.message-call').css('display', 'inline-block');
-                                                currentStatus = 4;
+                                                Vars.currentStatus = 4;
                                                 break;
                                             //стало 1
                                             case 1:
@@ -847,25 +1271,27 @@ $(document).ready(function(){
                                                 $('.message-remove').hide();
                                                 $('.message-call').hide();
                                                 $('.record-box').hide();
-                                                currentStatus = 1;
+                                                Vars.currentStatus = 1;
                                                 break;
                                         }
                                         break;
                                 }
-                                currentColumns = endColumns;
+                                Vars.currentColumns = endColumns;
                             }
                     }
             }
-            setTimeout(stopWidth, 500);
+            setTimeout(stopWidth, Vars.delay);
     });
-//ресайз высоты -! работает на следующем шаге !!!!
+}
+//Vertical resize
+function resizeHeight() {
     $(window).resize(function(){
         var newHeight;
         var endHeight;
-        newHeight = myWindow.clientHeight;
+        newHeight = Vars.myWindow.clientHeight;
         function stopHeight() {
-            endHeight = myWindow.clientHeight;
-            if ((endHeight === newHeight) && (endHeight !== currentHeight)) {
+            endHeight = Vars.myWindow.clientHeight;
+            if ((endHeight === newHeight) && (endHeight !== Vars.currentHeight)) {
                 var newHeightOfContainer = newSizeOfContainer();
                 $(".tab-container").height(newHeightOfContainer);
                 $(".grid-box").height(newHeightOfContainer);
@@ -875,11 +1301,51 @@ $(document).ready(function(){
                 $(".message-remove").height(newHeightOfContainer);
                 var mesSize = newHeightOfContainer - $('.block-caption').outerHeight(true) - $('.messages-toolbar').outerHeight(true) - $('.message-add').outerHeight(true);
                 $(".messages-list").height(mesSize);
-                currentHeight = endHeight;
+                Vars.currentHeight = endHeight;
             }
         }
-        setTimeout(stopHeight, 500);
+        setTimeout(stopHeight, Vars.delay);
     });
+}
+//Tab selection
+function clickTab() {
+    $('.tab-bar li').on('click', function() {
+        var tabStatus = $(this).attr('tab-active');
+        if ( tabStatus === 'false' ) {
+            $('.tab-bar li').each(function() {
+                $(this).attr('tab-active','false');
+            });
+            $(this).attr('tab-active','true');
+            var tabName = $(this).attr('tab-id');
+            requestCommutator('getList', tabName, 1);
+            $('.grid-box').empty();
+            showGrid(tabName, 1);
+        }
+    });
+}
+$(document).ready(function(){
+    Vars.initialHeight = Vars.myWindow.clientHeight;
+    Vars.currentHeight = Vars.initialHeight;
+    Vars.initialWidth = Vars.myWindow.clientWidth;
+    Vars.currentWidth = Vars.initialWidth;
+    Vars.initialColumns = classifyWidth(Vars.initialWidth);
+    Vars.currentColumns = Vars.initialColumns;
+    Vars.initialStatus = iniStat(Vars.initialColumns);
+    Vars.currentStatus = Vars.initialStatus;
+    setInitialHeight();
+    showInbox();
+    txtAdd();
+    startRattle();
+    clickSubject();
+    clickEnvelope();
+    clickMessagesCall();
+    clickMessagesRemove();
+    clickRecordCross();
+    clickMessageCross();
+    resizeWidth();
+    resizeHeight();
+    clickTab();
+    //добавить размещение пейджинга
 });
 
 

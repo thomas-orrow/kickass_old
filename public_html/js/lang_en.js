@@ -41,6 +41,22 @@ Text = {
 //Grid
             "401": "from:",
             "402": "to:",
+//Toolbar
+            "501": "new", //add task
+            "502": "edit",//edit task
+            "503": "revoke",//cancel task by sender
+            "504": "archive",//move task to archive
+            "505": "delete",//delete task
+            "506": "begin",//begin task
+            "507": "reject",//reject task
+            "508": "complete",//complete task
+            "509": "force",//force task
+            "510": "stop",//stop task
+            "511": "confirm",//confirm task
+            "512": "redo",//redo task
+            "513": "cancel confirmation",//cancel confirmation of task
+            "514": "return from archive",//return task from archive
+            "515": "restore",//restore task from recycle bin
 //Other texts
             "1001": "today", //in message
             "1002": "to:&nbsp;", //in message

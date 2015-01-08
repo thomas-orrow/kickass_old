@@ -60,7 +60,11 @@ ul, ol {
 
 .active-user {
   font-weight: bold;
-  color: white; }
+  color: white;
+  background-position: right center;
+  background-repeat: no-repeat;
+  background-image: url(../img/select16.png);
+  padding-right: 20px; }
 
 /*╨╜╨░╤Б╤В╤А╨╛╨╣╨║╨░ ╨▓╤Л╨┐╨░╨┤╨░╤И╨║╨╕*/
 .mt-menu {
@@ -75,7 +79,7 @@ ul, ol {
   height: 50px;
   position: relative;
   width: 100%;
-  padding-left: 15px;
+  padding-left: 20px;
   border-left-style: solid;
   border-left-width: 1px;
   border-left-color: transparent;
@@ -284,7 +288,7 @@ ul, ol {
 /*╨╜╨░╤Б╤В╤А╨╛╨╣╨║╨░ ╨▓╨╕╨┤╨░ ╨▓╨║╨╗╨░╨┤╨║╨╕*/
 .tab-bar {
   border-bottom-style: solid;
-  border-bottom-color: lightgray;
+  border-bottom-color: black;
   border-bottom-width: 1px; }
 
 .tab-bar ul {
@@ -300,17 +304,27 @@ ul, ol {
   background-position: 5% 50%;
   background-repeat: no-repeat;
   background-color: none;
-  vertical-align: baseline;
+  vertical-align: bottom;
   border-style: solid;
   border-radius: 10px 10px 0 0;
   border-color: lightgray;
   border-width: 1px;
-  border-bottom-color: transparent; }
+  border-bottom-color: black;
+  position: relative;
+  bottom: -1px; }
 
 .tab-bar li:hover {
   cursor: pointer;
   border-color: black;
   border-bottom-color: transparent; }
+
+.tab-bar li[tab-active="true"] {
+  background-color: white;
+  border-color: black;
+  border-bottom-color: white; }
+
+.tab-bar li[tab-active="true"]:hover {
+  cursor: default; }
 
 @media all and (max-width: 799px) {
   .tab-name {

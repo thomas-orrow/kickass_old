@@ -20,6 +20,14 @@
 //15 - как сделать так, чтобы при возврату к списку он был на том же месте?
 //16 - как быть с определением статуса в случае смартфонов???? - !!! очень важно!
 //17 - где-то при горизонтальной смене не учитывается футер!!!!
+//18 - на границе между первым и вторым разрешением глючит отображение по перерисовке
++//19 - после перехода на закладку перестает работать вывод сообщений и текста задачи !!!
+//20 - при горизонтальном ресайзе не учитывается появление/исчезновение футера
+//21 - на двух колонках мессаджи открываются прям на футер
+//22 - спец комменты, которые всегда прочитаны и генерируются при смене статусов и заполнении сообщений
+//Kickass: user user_name set "activity" on task[ and wrote a message:
+//bla-bla].
+//date/time
 <div class="message-list">
 <div>
     <a name="mes_5"></a>
@@ -38,3 +46,37 @@
 //
 
 
+НАВСЕГДА:
+        
+    $('.grid-box').on('click','.envelope', function() {
+    });
+
+
+1. Есть кнопки, которые есть всегда (add, delete, new)
+Доп. кнопки по статусам:
+новая        2. ""
+
+
+Статусы + archived
+unfocus
+usual
+rejected
+processed
+completed
+confirmed
+
+addTask();
+editTask(currentId);
+cancelTask(currentId);
+archiveTask(currentId);
+deleteTask(currentId);
+beginTask(currentId);
+rejectTask(currentId);
+completeTask(currentId);
+forceTask(currentId);
+stopTask(currentId);
+confirmTask(currentId);
+redoTask(currentId);
+notconfirmTask(currentId);
+returnTask(currentId);
+restoreTask(currentId);
