@@ -1,0 +1,147 @@
+.active-user {
+    background-image: url(../img/select16.png);
+}
+.tab-bar ul li:nth-of-type(1) {
+    background-image: url(/kickass/img/tab-all-active-24.png);
+}
+.tab-bar ul li:nth-of-type(2) {
+    background-image: url(/kickass/img/tab-inbox-active-24.png);
+}
+.tab-bar ul li:nth-of-type(3) {
+    background-image: url(/kickass/img/tab-outbox-active-24.png);
+}
+.tab-bar ul li:nth-of-type(4) {
+    background-image: url(/kickass/img/tab-shared-active-24.png);
+}
+.tab-bar ul li:nth-of-type(5) {
+    background-image: url(/kickass/img/tab-archive-active-24.png);
+}
+.tab-bar ul li:nth-of-type(6) {
+    background-image: url(/kickass/img/tab-recycle-active-24.png);
+}
+.clip-false {
+    background-image: url(../img/noclip24.png);
+}
+.flag-false {
+    background-image: url(../img/noflag24.png);
+}
+.flag-true {
+    background-image: url(../img/isflag24.png);
+}
+.envelope-false {
+    background-image: url(../img/envelopen24.png);
+}
+.envelope-true {
+    background-image: url(../img/enveclose24.png);
+}
+.envelope-true:hover {
+    background-image: url(../img/enveclose24.png);
+}
+.record-close, .message-close {
+    background-image: url(../img/close_block24.png);
+}
+.record-close:hover, .message-close:hover {
+    background-image: url(../img/close_block24hover.png);
+}
+.toolbar > .toolbar-button[btn-id="t-new"] {
+    background-image: url(../t-icons/add-b-w-24.png);
+}
+.toolbar > .toolbar-button[btn-id="t-new"]:hover {
+    background-image: url(../t-icons/add-w-g-24.png);
+}
+.toolbar > .toolbar-button[btn-id="t-archive"] {
+    background-image: url(../t-icons/archive-b-w-24.png);
+}
+.toolbar > .toolbar-button[btn-id="t-archive"]:hover {
+    background-image: url(../t-icons/archive-w-b-24.png);
+}
+.toolbar > .toolbar-button[btn-id="t-return"] {
+    background-image: url(../t-icons/unpack-b-w-24.png);
+}
+.toolbar > .toolbar-button[btn-id="t-return"]:hover {
+    background-image: url(../t-icons/unpack-w-b-24.png);
+}
+.toolbar > .toolbar-button[btn-id="t-delete"] {
+    background-image: url(../t-icons/del-b-dark-24.png);
+}
+.toolbar > .toolbar-button[btn-id="t-delete"]:hover {
+    background-image: url(../t-icons/del-w-red-24.png);
+}
+.toolbar > .toolbar-button[btn-id="t-restore"] {
+    background-image: url(../t-icons/restore-b-w-24.png);
+}
+.toolbar > .toolbar-button[btn-id="t-restore"]:hover {
+    background-image: url(../t-icons/restore-w-b-24.png);
+}
+.toolbar > .toolbar-button[btn-id="t-edit"] {
+    background-image: url(../t-icons/edit-b-w-24.png);
+}
+.toolbar > .toolbar-button[btn-id="t-edit"]:hover {
+    background-image: url(../t-icons/edit-w-b-24.png);
+}
+.toolbar > .toolbar-button[btn-id="t-begin"] {
+    background-image: url(../t-icons/play-b-w-24.png);
+}
+.toolbar > .toolbar-button[btn-id="t-begin"]:hover {
+    background-image: url(../t-icons/play-w-g-24.png);
+}
+.toolbar > .toolbar-button[btn-id="t-stop"] {
+    background-image: url(../t-icons/stop-b-w-24.png);
+}
+.toolbar > .toolbar-button[btn-id="t-stop"]:hover {
+    background-image: url(../t-icons/stop-w-b-24.png);
+}
+.toolbar > .toolbar-button[btn-id="t-revoke"] {
+    background-image: url(../t-icons/reject-w-24.png);
+}
+.toolbar > .toolbar-button[btn-id="t-revoke"]:hover {
+    background-image: url(../t-icons/reject-b-24.png);
+}
+.toolbar > .toolbar-button[btn-id="t-reject"] {
+    background-image: url(../t-icons/reject-w-24.png);
+}
+.toolbar > .toolbar-button[btn-id="t-reject"]:hover {
+    background-image: url(../t-icons/reject-b-24.png);
+}
+.toolbar > .toolbar-button[btn-id="t-force"] {
+    background-image: url(../t-icons/force-w-24.png);
+}
+.toolbar > .toolbar-button[btn-id="t-force"]:hover {
+    background-image: url(../t-icons/force-b-24.png);
+}
+.toolbar > .toolbar-button[btn-id="t-complete"] {
+    background-image: url(../t-icons/check-b-w-24.png);
+}
+.toolbar > .toolbar-button[btn-id="t-complete"]:hover {
+    background-image: url(../t-icons/check-w-g-24.png);
+}
+.toolbar > .toolbar-button[btn-id="t-redo"] {
+    background-image: url(../t-icons/delcheck-b-w-24.png);
+}
+.toolbar > .toolbar-button[btn-id="t-redo"]:hover {
+    background-image: url(../t-icons/delcheck-w-r-24.png);
+}
+.toolbar > .toolbar-button[btn-id="t-confirm"] {
+    background-image: url(../t-icons/confirm-b-w-24.png);
+}
+.toolbar > .toolbar-button[btn-id="t-confirm"]:hover {
+    background-image: url(../t-icons/confirm-w-s-24.png);
+}
+.toolbar > .toolbar-button[btn-id="t-notconfirm"] {
+    background-image: url(../t-icons/quest-b-w-24.png);
+}
+.toolbar > .toolbar-button[btn-id="t-notconfirm"]:hover {
+    background-image: url(../t-icons/quest-w-g-24.png);
+}
+.toolbar > .toolbar-button[btn-id="t-savetask"] {
+    background-image: url(../t-icons/cloud-b-w-24.png);
+}
+.toolbar > .toolbar-button[btn-id="t-savetask"]:hover {
+    background-image: url(../t-icons/cloud-w-b-24.png);
+}
+.toolbar > .toolbar-button[btn-id="t-canceledit"] {
+    background-image: url(../t-icons/cancel-b-w-24.png);
+}
+.toolbar > .toolbar-button[btn-id="t-canceledit"]:hover {
+    background-image: url(../t-icons/cancel-w-b-24.png);
+}

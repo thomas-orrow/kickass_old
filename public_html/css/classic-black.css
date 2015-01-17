@@ -63,7 +63,6 @@ ul, ol {
   color: white;
   background-position: right center;
   background-repeat: no-repeat;
-  background-image: url(../img/select16.png);
   padding-right: 20px; }
 
 /*╨╜╨░╤Б╤В╤А╨╛╨╣╨║╨░ ╨▓╤Л╨┐╨░╨┤╨░╤И╨║╨╕*/
@@ -156,18 +155,15 @@ ul, ol {
 
 .clip-false {
   background-position: center center;
-  background-repeat: no-repeat;
-  background-image: url(../img/noclip24.png); }
+  background-repeat: no-repeat; }
 
 .flag-false {
   background-position: center center;
-  background-repeat: no-repeat;
-  background-image: url(../img/noflag24.png); }
+  background-repeat: no-repeat; }
 
 .flag-true {
   background-position: center center;
-  background-repeat: no-repeat;
-  background-image: url(../img/isflag24.png); }
+  background-repeat: no-repeat; }
 
 .envelope span {
   position: absolute;
@@ -187,16 +183,11 @@ ul, ol {
 
 .envelope-false {
   background-position: center center;
-  background-repeat: no-repeat;
-  background-image: url(../img/envelopen24.png); }
+  background-repeat: no-repeat; }
 
 .envelope-true {
   background-position: center center;
-  background-repeat: no-repeat;
-  background-image: url(../img/enveclose24.png); }
-
-.envelope-true:hover {
-  background-image: url(../img/enveclose24.png); }
+  background-repeat: no-repeat; }
 
 .grid-line > span {
   position: absolute;
@@ -249,6 +240,22 @@ ul, ol {
 
 .read-false {
   font-weight: bold; }
+
+/*╨╜╨░╤Б╤В╤А╨╛╨╣╨║╨░ ╤В╤Г╨╗╨▒╨░╤А╨░*/
+.toolbar > .toolbar-button {
+  display: inline-block;
+  padding: 15px 40px 5px 5px;
+  margin: 2px;
+  background-color: black;
+  color: white;
+  background-repeat: no-repeat;
+  background-position: right center; }
+
+.toolbar > .toolbar-button:hover {
+  cursor: pointer; }
+
+.more > .toolbar-button {
+  display: block; }
 
 /*╨╜╨░╤Б╤В╤А╨╛╨╣╨║╨░ ╨▓╨╕╨┤╨░ ╨┐╨╡╤А╨╡╨┐╨╕╤Б╨║╨╕*/
 .messages-list div {
@@ -332,24 +339,6 @@ ul, ol {
 
   .tab-bar li {
     background-position: center center; } }
-.tab-bar ul li:nth-of-type(1) {
-  background-image: url(/kickass/img/tab-all-active-24.png); }
-
-.tab-bar ul li:nth-of-type(2) {
-  background-image: url(/kickass/img/tab-inbox-active-24.png); }
-
-.tab-bar ul li:nth-of-type(3) {
-  background-image: url(/kickass/img/tab-outbox-active-24.png); }
-
-.tab-bar ul li:nth-of-type(4) {
-  background-image: url(/kickass/img/tab-shared-active-24.png); }
-
-.tab-bar ul li:nth-of-type(5) {
-  background-image: url(/kickass/img/tab-archive-active-24.png); }
-
-.tab-bar ul li:nth-of-type(6) {
-  background-image: url(/kickass/img/tab-recycle-active-24.png); }
-
 .main-footer {
   background: #5d94f2;
   text-align: center;
@@ -435,11 +424,9 @@ ul, ol {
   width: 26px;
   height: 26px;
   background-position: center center;
-  background-repeat: no-repeat;
-  background-image: url(../img/close_block24.png); }
+  background-repeat: no-repeat; }
 
 .record-close:hover, .message-close:hover {
-  background-image: url(../img/close_block24hover.png);
   cursor: pointer; }
 
 @media ALL and (min-width: 600px) {

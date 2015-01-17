@@ -57,6 +57,8 @@ Text = {
             "513": "cancel confirmation",//cancel confirmation of task
             "514": "return from archive",//return task from archive
             "515": "restore",//restore task from recycle bin
+            "516": "save",//save task
+            "517": "cancel",//cancel edit task
 //Other texts
             "1001": "today", //in message
             "1002": "to:&nbsp;", //in message

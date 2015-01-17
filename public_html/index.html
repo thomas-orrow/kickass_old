@@ -8,152 +8,138 @@
         <base href="">
         <link href="css/main.css" rel="stylesheet" type="text/css">
         <link href="favicon.ico" rel="shortcut icon" type="image/x-icon">
-	<script src="js/jquery-1.11.2.min.js" type="text/javascript"></script>
-	<script src="js/jquery.cookie.js" type="text/javascript"></script>
+        <script src="js/jquery-1.11.2.min.js" type="text/javascript"></script>
+        <script src="js/jquery.cookie.js" type="text/javascript"></script>
+        <script src="js/data.js" type="text/javascript"></script>
         <script src="js/lang_en.js" type="text/javascript"></script>
         <script src="js/processor.js" type="text/javascript"></script>
        	<script src="js/karad.js" type="text/javascript"></script>
-	<script src="js/kawind.js" type="text/javascript"></script>
-	<script src="js/showmenu.js" type="text/javascript"></script>
-	<script src="js/hidemenu.js" type="text/javascript"></script>
-	<script src="js/showtoolbar.js" type="text/javascript"></script>
-	<!--<script src="js/interface.js" type="text/javascript"></script>-->
+        <script src="js/kawind.js" type="text/javascript"></script>
+        <script src="js/showmenu.js" type="text/javascript"></script>
+        <script src="js/hidemenu.js" type="text/javascript"></script>
+        <script src="js/showtoolbar.js" type="text/javascript"></script>
+        <!--<script src="js/interface.js" type="text/javascript"></script>-->
         <title>Интерфейс</title>
     </head>
-        <body>
-            <div class="main-wrapper">
-                <div class="main-caption">
-                    <div class="menu-btn" data-group="mt_apps">
-                        <div>
-                            <img src="img/apps24.png" alt=""/>
-                        </div>
-                        <div class="mt-menu menu0" data-group="mt_apps">
-                            <ul>
-                                <li><a href="#tabs-1" class="txt" data-txtid="2"></a></li>
-                                <li><a href="#tabs-1" class="txt" data-txtid="3"></a></li>
-                                <li><a href="#tabs-2" class="txt" data-txtid="4"></a></li>
-                                <li><a href="#tabs-3" class="txt" data-txtid="5"></a></li>
-                            </ul>
-                        </div>
+    <body>
+        <div class="main-wrapper">
+            <div class="main-caption">
+                <div class="menu-btn" data-group="mt_apps">
+                    <div>
+                        <img src="img/apps24.png" alt=""/>
                     </div>
-                    <div class="site-name txt" data-txtid="1">
-                        
-                    </div>
-                    <div class="menu-btn user-block" data-group="mt_user">
-                        <div class="active-user">
-                            tom-orrow
-                        </div>
-                        <div class="mt-menu menu1" data-group="mt_user">
-                            <ul>
-                                  <li><a href="#tabs-1" class="txt" data-txtid="9"></a></li>
-                                  <li><a href="#tabs-2" class="txt" data-txtid="10"></a></li>
-                                  <li><a href="#tabs-3" class="txt" data-txtid="11"></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="menu-btn main-menu" data-group="mt_menu">
-                        <div>
-                            <img src="img/menu24.png" alt=""/>
-                        </div>
-                        <div class="mt-menu menu2" data-group="mt_menu">
-                            <ul>
-                                <li><a href="#tabs-1" class="txt" data-txtid="6"></a></li>
-                                <li><a href="#tabs-1" class="txt" data-txtid="7"></a></li>
-                                <li><a href="#tabs-2" class="txt" data-txtid="8"></a></li>
-                                <li><a href="#tabs-3" class="txt" data-txtid="12"></a></li>
-                            </ul>
-                        </div>
+                    <div class="mt-menu menu0" data-group="mt_apps">
+                        <ul>
+                            <li><a href="#tabs-1" class="txt" data-txtid="2"></a></li>
+                            <li><a href="#tabs-1" class="txt" data-txtid="3"></a></li>
+                            <li><a href="#tabs-2" class="txt" data-txtid="4"></a></li>
+                            <li><a href="#tabs-3" class="txt" data-txtid="5"></a></li>
+                        </ul>
                     </div>
                 </div>
-                <div class="tab-bar">
-                    <ul>
-                        <li tab-id="all" tab-active="false"><span class="tab-name txt" data-txtid="101"></span></li>
-                        <li tab-id="inbox" tab-active="false"><span class="tab-name txt" data-txtid="102"></span></li>
-                        <li tab-id="outbox" tab-active="false"><span class="tab-name txt" data-txtid="103"></span></li>
-                        <li tab-id="shared" tab-active="false"><span class="tab-name txt" data-txtid="104"></span></li>
-                        <li tab-id="archive" tab-active="false"><span class="tab-name txt" data-txtid="105"></span></li>
-                        <li tab-id="trash" tab-active="false"><span class="tab-name txt" data-txtid="106"></span></li>
-                    </ul>
+                <div class="site-name txt" data-txtid="1">
+
                 </div>
-                <div class="toolbar">
-                    <div class="menu-btn more" data-group="mt_more">
-                        <div>
-                            ...
-                        </div>
-                        <div class="mt-menu menu4" data-group="mt_more">
-                            <ul>
-                                <li><a href="#tabs-1" class="txt" data-txtid="207"></a></li>
-                                <li><a href="#tabs-1" class="txt" data-txtid="208"></a></li>
-                                <li><a href="#tabs-2" class="txt" data-txtid="209"></a></li>
-                            </ul>
-                        </div>
+                <div class="menu-btn user-block" data-group="mt_user">
+                    <div class="active-user">
+                        tom-orrow
                     </div>
-                    <ul>
-                        <li class="txt" data-txtid="201"></li>
-                        <li class="txt" data-txtid="202"></li>
-                        <li class="txt" data-txtid="203"></li>
-                    </ul>
-                </div>
-                <div class="panel-container">
-                    <div class="panel-add">
-                        <div class="quick-add txt" data-txtid="303">
-                        </div>
-                        <div class="full-add">
-                        </div>
-                    </div>
-                    <div class="panel-find">
-                        <div class="quick-find txt" data-txtid="304">
-                        </div>
-                        <div class="full-filter">
-                        </div>
+                    <div class="mt-menu menu1" data-group="mt_user">
+                        <ul>
+                            <li><a href="#tabs-1" class="txt" data-txtid="9"></a></li>
+                            <li><a href="#tabs-2" class="txt" data-txtid="10"></a></li>
+                            <li><a href="#tabs-3" class="txt" data-txtid="11"></a></li>
+                        </ul>
                     </div>
                 </div>
-                <div class="tab-container" id="tabs-1">
-                        <!--Grid of records-->
-                        <div class="grid-box">
-                        </div>
-                        <!--Record-->
-                        <div class="record-box">
-                            <div class="record-close">
-                            </div>
-                            <div class="block-caption txt" data-txtid="301">
-                            </div>
-                            <div class="record">
-                                <h3></h3>
-                                <p></p>
-                            </div>
-                        </div>
-                        <!--Messages-->
-                        <div class="message-call">
-                                <img src="img/tomessages.png" height="48" width="14" alt="">
-                        </div>
-                        <div class="message-remove">
-                                <img src="img/totask.png" height="48" width="14" alt="">
-                        </div>
-                        <div class="message-box">
-                            <div class="message-close">
-                            </div>
-                            <div class="block-caption txt" data-txtid="302">
-                            </div>
-                            <div class="messages-toolbar">
-                                <span class="txt" data-txtid="204"></span>
-                                <span class="txt" data-txtid="205"></span>
-                                <span class="txt" data-txtid="206"></span>
-                            </div>
-                            <div class="message-add">
-                                <span class="txt" data-txtid="210"></span>
-                            </div>
-                            <div class="messages-list">
-                                
-                            </div>
-                        </div>
-                </div>
-                <div class="main-placeholder">
+                <div class="menu-btn main-menu" data-group="mt_menu">
+                    <div>
+                        <img src="img/menu24.png" alt=""/>
+                    </div>
+                    <div class="mt-menu menu2" data-group="mt_menu">
+                        <ul>
+                            <li><a href="#tabs-1" class="txt" data-txtid="6"></a></li>
+                            <li><a href="#tabs-1" class="txt" data-txtid="7"></a></li>
+                            <li><a href="#tabs-2" class="txt" data-txtid="8"></a></li>
+                            <li><a href="#tabs-3" class="txt" data-txtid="12"></a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-            <div class="main-footer">
-                Footer status string
-                <div class="footer-off">OFF</div>
+            <div class="tab-bar">
+                <ul>
+                    <li tab-id="all" tab-active="false"><span class="tab-name txt" data-txtid="101"></span></li>
+                    <li tab-id="inbox" tab-active="false"><span class="tab-name txt" data-txtid="102"></span></li>
+                    <li tab-id="outbox" tab-active="false"><span class="tab-name txt" data-txtid="103"></span></li>
+                    <li tab-id="shared" tab-active="false"><span class="tab-name txt" data-txtid="104"></span></li>
+                    <li tab-id="archive" tab-active="false"><span class="tab-name txt" data-txtid="105"></span></li>
+                    <li tab-id="trash" tab-active="false"><span class="tab-name txt" data-txtid="106"></span></li>
+                </ul>
             </div>
-        </body>
+            <div class="toolbar">
+            </div>
+            <div class="ruler">
+            </div>
+            <div class="panel-container">
+                <div class="panel-add">
+                    <div class="quick-add txt" data-txtid="303">
+                    </div>
+                    <div class="full-add">
+                    </div>
+                </div>
+                <div class="panel-find">
+                    <div class="quick-find txt" data-txtid="304">
+                    </div>
+                    <div class="full-filter">
+                    </div>
+                </div>
+            </div>
+            <div class="tab-container" id="tabs-1">
+                <!--Grid of records-->
+                <div class="grid-box">
+                </div>
+                <!--Record-->
+                <div class="record-box">
+                    <div class="record-close">
+                    </div>
+                    <div class="block-caption txt" data-txtid="301">
+                    </div>
+                    <div class="record">
+                        <h3></h3>
+                        <p></p>
+                    </div>
+                </div>
+                <!--Messages-->
+                <div class="message-call">
+                    <img src="img/tomessages.png" height="48" width="14" alt="">
+                </div>
+                <div class="message-remove">
+                    <img src="img/totask.png" height="48" width="14" alt="">
+                </div>
+                <div class="message-box">
+                    <div class="message-close">
+                    </div>
+                    <div class="block-caption txt" data-txtid="302">
+                    </div>
+                    <div class="messages-toolbar">
+                        <span class="txt" data-txtid="204"></span>
+                        <span class="txt" data-txtid="205"></span>
+                        <span class="txt" data-txtid="206"></span>
+                    </div>
+                    <div class="message-add">
+                        <span class="txt" data-txtid="210"></span>
+                    </div>
+                    <div class="messages-list">
+
+                    </div>
+                </div>
+            </div>
+            <div class="main-placeholder">
+            </div>
+        </div>
+        <div class="main-footer">
+            Footer status string
+            <div class="footer-off">OFF</div>
+        </div>
+    </body>
 </html>
