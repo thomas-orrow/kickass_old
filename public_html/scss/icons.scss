@@ -128,10 +128,10 @@
     background-image: url(../t-icons/confirm-p-h.png);
 }
 .toolbar > .toolbar-button[btn-id="t-notconfirm"] {
-    background-image: url(../t-icons/quest-p.png);
+    background-image: url(../t-icons/not-confirmed-p.png);
 }
 .toolbar > .toolbar-button[btn-id="t-notconfirm"]:hover {
-    background-image: url(../t-icons/quest-p-h.png);
+    background-image: url(../t-icons/not-confirmed-p-h.png);
 }
 .toolbar > .toolbar-button[btn-id="t-savetask"] {
     background-image: url(../t-icons/cloud-p.png);
@@ -237,10 +237,10 @@
         background-image: url(../t-icons/confirm-s-h.png);
     }
     .toolbar > .toolbar-button[btn-id="t-notconfirm"] {
-        background-image: url(../t-icons/quest-s.png);
+        background-image: url(../t-icons/not-confirmed-s.png);
     }
     .toolbar > .toolbar-button[btn-id="t-notconfirm"]:hover {
-        background-image: url(../t-icons/quest-s-h.png);
+        background-image: url(../t-icons/not-confirmed-s-h.png);
     }
     .toolbar > .toolbar-button[btn-id="t-savetask"] {
         background-image: url(../t-icons/cloud-s.png);
@@ -256,10 +256,10 @@
     }
 }
 .show-full-search {
-    background-image: url(../img/funnel.png);
+    background-image: url(../img/magnifier-plus.png);
 }
 .show-full-search:hover {
-    background-image: url(../img/funnel-h.png);
+    background-image: url(../img/magnifier-plus-h.png);
 }
 .search-submit input {
     background-image: url(../img/magnifier.png);
@@ -274,10 +274,10 @@
     background-image: url(../img/form-h.png);
 }
 .add-submit input {
-    background-image: url(../t-icons/cloud-s.png);
+    background-image: url(../t-icons/save.png);
 }
 .add-submit input:hover {
-    background-image: url(../t-icons/cloud-s-h.png);
+    background-image: url(../t-icons/save-h.png);
 }
 .message-submit input {
     background-image: url(../t-icons/send.png);

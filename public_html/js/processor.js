@@ -24,6 +24,8 @@ Vars.toolbarSize;
 Vars.lineStatus;
 Vars.lineParty;
 Vars.firstClick = [true, true, true, true, true];
+Vars.messageFormStatus = new Array();
+//Vars.messageFormText = new Array();
 var User = new Object();
 //тестовые данные юзера
 User.name = 'username2';
@@ -116,6 +118,16 @@ function newSizeOfContainer() {
     var sizeOfBody = $('body').outerHeight(true); //зачем это надо?
     var sizeOfContainer = Vars.myWindow.clientHeight - sizeOfInterface;
     return sizeOfContainer;
+}
+function setHeights(height) {
+    $(".tab-container").height(height);
+    $(".grid-box").height(height);
+    $(".record-box").height(height);
+    $(".message-box").height(height);
+    $(".message-call").height(height);
+    $(".message-remove").height(height);
+    var mesSize = height - $('.block-caption').outerHeight(true) - $('.message-add').outerHeight(true);
+    $(".messages-list").height(mesSize);
 }
 // AJAX
 function requestCommutator(fname, firstArg, secondArg, thirdArg) {
@@ -463,6 +475,21 @@ function requestCommutator(fname, firstArg, secondArg, thirdArg) {
                             "flag": false,
                             "files": false
                         },
+                        "460": {
+                            "priority": "normal",
+                            "subj": "Обычная прочитанная утвержденная старая задача",
+                            "read": true,
+                            "status": "confirmed",
+                            "overdue": null,
+                            "archive": false,
+                            "from": "username2",
+                            "fromid": "userid_08973625",
+                            "to": "username1",
+                            "toid": "userid_08973626",
+                            "envelope": "0",
+                            "flag": false,
+                            "files": false
+                        },
                         "463": {
                             "priority": "normal",
                             "subj": "Обычная прочитанная утвержденная старая задача",
@@ -756,6 +783,38 @@ function showTask(taskId) {
     $('.record').children('p').empty();// заполнение темы рекорда
     $('.record').children('p').append(recordText);
 }
+function showAddMessageLine() {
+    $('.message-add').css('display', 'block');
+    $('.full-message').css('display', 'none');
+    $('.new-message').css('display', 'inline-block');
+    $('.new-message').css('height', '32px');
+    setHeights(newSizeOfContainer());
+    Vars.messageFormStatus[Vars.activeTab] = 'line';
+}
+function showAddMessageForm() {
+    $('.new-message').focusin(function () {
+        $('.full-message').css('display', 'inline-block');
+        $('.new-message').css('height', '128px');
+        setHeights(newSizeOfContainer());
+        Vars.messageFormStatus[Vars.activeTab] = 'form';
+    });
+}
+function hideAddMessageForm() {
+    $('.message-form').focusout(function () {
+        $('.full-message').css('display', 'none');
+        $('.new-message').css('height', '32px');
+        setHeights(newSizeOfContainer());
+        Vars.messageFormStatus[Vars.activeTab] = 'line';
+    });
+}
+function hideAddMessageLine() {
+    $('.message-add').css('display', 'none');
+    $('.full-message').css('display', 'none');
+    $('.new-message').css('height', '32px');
+    $('.new-message').css('display', 'none');
+    setHeights(newSizeOfContainer());
+    Vars.messageFormStatus[Vars.activeTab] = 'none';
+}
 function showMessages(recId) {
     var mesCode = '';
     var to;
@@ -794,6 +853,7 @@ function showMessages(recId) {
         }
         mesCode = '' + mesCode + '<div>\n    <a name=\"mes_' + key + '\"><\/a>\n    <span class=\"user-name\" data-user=\"' + MessagesList[key].from + '\">' + MessagesList[key].fromName + '<\/span>\n' + to + '<span class=\"message' + mesText + '<\/span>\n' + mesDate + '    <span>' + MessagesList[key].time + '<\/span>\n    <span class=\"reply\">' + Text[1004] + '</span>\n<\/div>\n';
     }
+    showAddMessageLine();
     $('.messages-list').empty();
     $('.messages-list').append(mesCode);
 }
@@ -1232,14 +1292,7 @@ function resizeHeight() {
             endHeight = Vars.myWindow.clientHeight;
             if ((endHeight === newHeight) && (endHeight !== Vars.currentHeight)) {
                 var newHeightOfContainer = newSizeOfContainer();
-                $(".tab-container").height(newHeightOfContainer);
-                $(".grid-box").height(newHeightOfContainer);
-                $(".record-box").height(newHeightOfContainer);
-                $(".message-box").height(newHeightOfContainer);
-                $(".message-call").height(newHeightOfContainer);
-                $(".message-remove").height(newHeightOfContainer);
-                var mesSize = newHeightOfContainer - $('.block-caption').outerHeight(true) - $('.messages-toolbar').outerHeight(true) - $('.message-add').outerHeight(true);
-                $(".messages-list").height(mesSize);
+                setHeights(newHeightOfContainer);
                 Vars.currentHeight = endHeight;
             }
         }
@@ -1292,6 +1345,17 @@ function clickTab() {
                 emptyMessages();
             }
             showToolbar(Vars.lineStatus, Vars.lineParty);
+            switch (Vars.messageFormStatus[Vars.activeTab]) {
+                case 'line':
+                    showAddMessageLine();
+                    break;
+                case 'form':
+                    showAddMessageForm();
+                    break;
+                default:
+                    hideAddMessageLine();
+                    break;
+            }
         }
     });
 }
@@ -1323,6 +1387,8 @@ $(document).ready(function () {
     showToolbar(Vars.lineStatus, Vars.lineParty);
     showMenu();
     hideMenu();
+    showAddMessageForm();
+    hideAddMessageForm();
 });
 
 

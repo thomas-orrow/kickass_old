@@ -194,6 +194,7 @@ ul, ol {
     cursor: pointer;
 }
 .message-add {
+    display: none;
     background-color: lavender;
     padding-top: 10px;
 }
@@ -201,12 +202,11 @@ ul, ol {
     display: block;
     vertical-align: top;
     text-align: center;
-    height: 32px;
     width: 100%;
-    margin-bottom: 10px;
+    padding-bottom: 10px;
 }
 .full-message {
-    display: inline-block;
+    display: none;
     width: 100%;
 }
 .full-message label {
