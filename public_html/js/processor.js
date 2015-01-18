@@ -2,7 +2,7 @@
 var Vars = new Object();
 Vars.width1 = 600; // первая граница адаптивки, до которой показывается одна колонка
 Vars.width2 = 900; // вторая граница адаптивки, до которой показывается две колонки
-Vars.delay = 100; //задержка при перерисовке
+Vars.delay = 200; //задержка при перерисовке
 Vars.initialHeight;
 Vars.currentHeight;
 Vars.initialWidth;
@@ -23,6 +23,7 @@ Vars.dotsSize;
 Vars.toolbarSize;
 Vars.lineStatus;
 Vars.lineParty;
+Vars.firstClick = [true, true, true, true, true];
 var User = new Object();
 //тестовые данные юзера
 User.name = 'username2';
@@ -43,6 +44,32 @@ function countKeys(objName) {
         keyCounter++;
     }
     return keyCounter;
+}
+//Menu
+function showMenu() {
+    $('.main-wrapper').on('click', '.menu-btn', function () {
+        var mtGroup = $(this).attr('data-group');
+        $(".mt-menu[data-group='" + mtGroup + "']").show();
+    });
+}
+function hideMenu() {
+    $(document).on('click.myEvent', function (e) {
+        for (var i = 0; i < Vars.firstClick.length; i++) {
+            var menu = $('.menu' + i);
+            //	то проверяем открыто ли меню
+            if (menu.css('display') === 'block') {
+                //    если открыто i-е меню и клик не первый и клик не в i-м меню, то скрыть i-е меню, выйти из цикла
+                if ((!Vars.firstClick[i]) && ($(e.target).closest('menu').length === 0)) {
+                    menu.hide();
+                    Vars.firstClick[i] = true;
+                    break;
+                } else {
+                    //  если же меню открыто, но либо первый клик, либо клик не снаружи от меню, то ставим, что клик не первый
+                    Vars.firstClick[i] = false;
+                }
+            }
+        }
+    });
 }
 // Column pcs
 function classifyWidth(measuredWidth) {
@@ -643,7 +670,7 @@ function showLine(tabName, lineId) {
             break;
         case 'accepted':
             subjStatus = 'status-accepted';
-            coverImg = 'grad_gainsboro.png';
+            coverImg = 'grad_lightblue.png';
             break;
         case 'completed':
             subjStatus = 'status-completed';
@@ -721,6 +748,14 @@ function showGrid(tabName) {
         $('.grid-box').append(line);
     }
 }
+function showTask(taskId) {
+    var recordText = requestCommutator('getText', taskId);// получаем по ajax текст сообщения по полученному id
+    var recordSubject = getSubject(Vars.activeTab, taskId);
+    $('.record').children('h3').empty();// заполнение темы рекорда
+    $('.record').children('h3').append(recordSubject);
+    $('.record').children('p').empty();// заполнение темы рекорда
+    $('.record').children('p').append(recordText);
+}
 function showMessages(recId) {
     var mesCode = '';
     var to;
@@ -762,6 +797,13 @@ function showMessages(recId) {
     $('.messages-list').empty();
     $('.messages-list').append(mesCode);
 }
+function emptyTask() {
+    $('.record').children('h3').empty();
+    $('.record').children('p').empty();
+}
+function emptyMessages() {
+    $('.messages-list').empty();
+}
 function txtAdd() {
     $('.txt').each(function () {
         var txtId = $(this).attr('data-txtid');
@@ -784,7 +826,7 @@ function drawButton(btName) {
 }
 function showDots(moreBtns) {
     var dotsCode = '';
-    dotsCode = '                    <div class="menu-btn more" data-group="mt_more">\n                        <div>\n                            ...\n                        </div>\n                        <div class="mt-menu menu4" data-group="mt_more">\n' + moreBtns + '                        </div>\n                    </div>\n';
+    dotsCode = '                    <div class="menu-btn more" data-group="mt_more">\n                        <div>\n                            \n                        </div>\n                        <div class="mt-menu menu4" data-group="mt_more">\n' + moreBtns + '                        </div>\n                    </div>\n';
     return dotsCode;
 }
 function buttonSizes() {
@@ -809,7 +851,7 @@ function showToolbar(lineStatus, lineParty) {
     for (var key in Toolbar[lineStatus][lineParty]) {
         btName = Toolbar[lineStatus][lineParty][key];
         restWidth = restWidth - Buttons[btName].width;
-        if (restWidth > Vars.dotsSize) {
+        if (restWidth > (Vars.dotsSize + 20)) {
             toolbarCode = '' + toolbarCode + drawButton(btName);
         } else {
             moreCode = '' + moreCode + drawButton(btName);
@@ -889,7 +931,6 @@ function setInitialHeight() {
     $(".messages-list").height(mesSize);
 }
 //STATUS functions:
-// Subject click
 function clickSubject() {
     $('.grid-box').on('click', '.grid-line', function (f) {
         var isActive = $(this).attr('data-active');
@@ -918,12 +959,7 @@ function clickSubject() {
                 }
             }
             showToolbar(Vars.lineStatus, Vars.lineParty);
-            var recordText = requestCommutator('getText', currentId);// получаем по ajax текст сообщения по полученному id
-            var recordSubject = getSubject(Vars.activeTab, currentId);
-            $('.record').children('h3').empty();// заполнение темы рекорда
-            $('.record').children('h3').append(recordSubject);
-            $('.record').children('p').empty();// заполнение темы рекорда
-            $('.record').children('p').append(recordText);
+            showTask(currentId);
             showMessages(currentId); //в любом случае показываем сообщения хоть и на заднем плане
         }
 // функция перехода со статуса 1 на статус 2 (открытие рекорда в одноколоночном варианте)
@@ -956,7 +992,6 @@ function clickSubject() {
 //        }
     });
 }
-//Envelope click
 function clickEnvelope() {
     $('.grid-box').on('click', '.envelope', function () {
         var recId = $(this).parents('.grid-line:first').attr('id');
@@ -984,7 +1019,6 @@ function clickEnvelope() {
         }
     });
 }
-//Message call click
 function clickMessagesCall() {
 //клик на вызов сообщений из текста задачи
 //функция перехода со статуса 2 на статус 3 (открытие сообщений из рекорда в одноколоночном варианте)
@@ -1010,7 +1044,6 @@ function clickMessagesCall() {
         }
     });
 }
-//Message remove click
 function clickMessagesRemove() {
 // клик на скрытие сообщений (не на крест)
     $('.message-remove').on('click', function () {
@@ -1036,7 +1069,6 @@ function clickMessagesRemove() {
         }
     });
 }
-//Record cross click
 function clickRecordCross() {
     $('.record-close').on('click', function () {
 // функция перехода со статуса 2 на статус 1 (закрытие рекорда в одноколоночном варианте)
@@ -1049,7 +1081,6 @@ function clickRecordCross() {
         }
     });
 }
-//Message cross click
 function clickMessageCross() {
     $('.message-close').on('click', function () {
 // функция перехода со статуса 3 на статус 1 (закрытие сообщений и возврат к списку в одноколоночном варианте)
@@ -1074,7 +1105,7 @@ function clickMessageCross() {
         }
     });
 }
-//Horizontal resize
+//resize
 function resizeWidth() {
     $(window).resize(function () {
         var newWidth;
@@ -1084,6 +1115,8 @@ function resizeWidth() {
             endWidth = Vars.myWindow.clientWidth;
             if (endWidth === newWidth) {
                 var endColumns = classifyWidth(endWidth);
+                buttonSizes();
+                showToolbar(Vars.lineStatus, Vars.lineParty);
                 if (endColumns !== Vars.currentColumns) {
 // здесь все варианты смены статусов и перерисовки
                     switch (Vars.currentColumns) {
@@ -1190,7 +1223,6 @@ function resizeWidth() {
         setTimeout(stopWidth, Vars.delay);
     });
 }
-//Vertical resize
 function resizeHeight() {
     $(window).resize(function () {
         var newHeight;
@@ -1232,6 +1264,8 @@ function clickTab() {
             if (Vars.activeLine[Vars.activeTab] !== undefined) {
                 var divId = 'div#' + Vars.activeLine[Vars.activeTab];
                 currentId = Vars.activeLine[Vars.activeTab];
+                showTask(currentId);
+                showMessages(currentId);
                 $(divId).attr('data-active', 'true');
                 if (TabGrid[Vars.activeTab][currentId].deleted === true) {
                     Vars.lineStatus = 'deleted';
@@ -1254,6 +1288,8 @@ function clickTab() {
             } else {
                 Vars.lineStatus = 'unfocus';
                 Vars.lineParty = 'sender';
+                emptyTask();
+                emptyMessages();
             }
             showToolbar(Vars.lineStatus, Vars.lineParty);
         }
@@ -1285,6 +1321,8 @@ $(document).ready(function () {
     clickTab();
     buttonSizes();
     showToolbar(Vars.lineStatus, Vars.lineParty);
+    showMenu();
+    hideMenu();
 });
 
 

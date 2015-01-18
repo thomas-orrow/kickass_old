@@ -2,7 +2,7 @@
 /*Grid line*/
 $line_half: 24px;
 $line_height: $line_half*2+2;
-$hover_border: 1px;
+$hover_border: 2px;
 
 
 //end of variables
@@ -32,29 +32,29 @@ a:hover {
     text-decoration: underline;
 }
 h1 {
-    font-size: 20px;
+    font-size: 1.4em;
     font-weight: normal;
     margin: 25px 0 25px 20px;
     text-align: justify;
 }
 h2 {
-    font-size: 16px;
+    font-size: 1.3em;
     margin: 15px 0 15px 0;
     text-align: justify;
 }
 h3 {
-    font-size: 14px;
+    font-size: 1.2em;
     font-weight: bold;
     margin: 10px 0 10px 0;
     text-align: justify;
 }
 p {
-    font-size: 14px;
+    font-size: 1.1em;
     margin: 10px 0 10px 0;
     text-align: justify;
 }
 ul, ol {
-    font-size: 14px;
+    font-size: 1em;
     margin: 0 0 0 30px;
     text-align: left;
 }
@@ -70,6 +70,198 @@ ul, ol {
     background-position: right center;
     background-repeat: no-repeat;
     padding-right: 20px;
+}
+.panel-container {
+    background-color: lavender;
+}
+/*панели*/
+.panel-find {
+    text-align: left;
+}
+.full-search {
+    display: none;
+}
+.quck-search {
+    display: inline-block;
+    vertical-align: top;
+    height: 32px;
+    width: 70%;
+    margin: 2px 0 10px 0;
+}
+.quck-search input {
+    height: 32px;
+    width: 100%;
+    font-size: 1.2em;
+    border-radius: 6px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: lightgray;
+}
+.show-full-search {
+    display: inline-block;
+    vertical-align: top;
+    height: 32px;
+    width: 32px;
+    margin: 2px 0 10px 10px;
+    background-color: white;
+    background-position: center center;
+    background-repeat: no-repeat;
+    border-style: solid;
+    border-color: lightgray;
+    border-width: 1px;
+    border-radius: 6px;
+}
+.search-submit {
+    display: inline-block;
+    vertical-align: top;
+    height: 32px;
+    width: 32px;
+    margin: 2px 0 10px 10px;
+}
+.search-submit input {
+    height: 32px;
+    width: 32px;
+    background-color: white;
+    background-position: center center;
+    background-repeat: no-repeat;
+    border-style: solid;
+    border-color: lightgray;
+    border-width: 1px;
+    border-radius: 6px;
+}
+.show-full-search:hover, .search-submit input:hover {
+    border-color: grey;
+    background-color: #c8c8dc;
+    cursor: pointer;
+}
+.panel-add {
+    text-align: left;
+}
+.full-add {
+    display: none;
+}
+.quick-add {
+    display: inline-block;
+    vertical-align: top;
+    height: 32px;
+    width: 70%;
+    margin: 2px 0 10px 0;
+}
+.quick-add input {
+    height: 32px;
+    width: 100%;
+    font-size: 1.2em;
+    border-radius: 6px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: lightgray;
+}
+.show-full-add {
+    display: inline-block;
+    vertical-align: top;
+    height: 32px;
+    width: 32px;
+    margin: 2px 0 10px 10px;
+    background-color: white;
+    background-position: center center;
+    background-repeat: no-repeat;
+    border-style: solid;
+    border-color: lightgray;
+    border-width: 1px;
+    border-radius: 6px;
+}
+.add-submit {
+    display: inline-block;
+    vertical-align: top;
+    height: 32px;
+    width: 32px;
+    margin: 2px 0 10px 10px;
+}
+.add-submit input {
+    height: 32px;
+    width: 32px;
+    background-color: white;
+    background-position: center center;
+    background-repeat: no-repeat;
+    border-style: solid;
+    border-color: lightgray;
+    border-width: 1px;
+    border-radius: 6px;
+}
+.show-full-add:hover, .add-submit input:hover {
+    border-color: grey;
+    background-color: #c8c8dc;
+    cursor: pointer;
+}
+.message-add {
+    background-color: lavender;
+    padding-top: 10px;
+}
+.add-text {
+    display: block;
+    vertical-align: top;
+    text-align: center;
+    height: 32px;
+    width: 100%;
+    margin-bottom: 10px;
+}
+.full-message {
+    display: inline-block;
+    width: 100%;
+}
+.full-message label {
+    font-weight: bold;
+}
+#personal-message {
+    cursor: pointer;
+    margin-left: 10px;
+    width: 24px;
+    height: 24px;
+}
+.full-message label[for="personal-message"] {
+    cursor: pointer;
+}
+.full-message select {
+    height: 24px;
+    font-size: 1em;
+    background-color: white;
+    border-style: solid;
+    border-color: lightgray;
+    border-width: 1px;
+    border-radius: 6px;
+}
+.new-message {
+    height: 32px;
+    width: 90%;
+    margin: 0 auto;
+    font-size: 1.2em;
+    border-radius: 6px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: lightgray;
+}
+.message-submit {
+    float: right;
+    vertical-align: top;
+    height: 32px;
+    width: 32px;
+    margin: 2px 10px 10px 10px;
+}
+.message-submit input {
+    height: 32px;
+    width: 32px;
+    background-color: white;
+    background-position: center center;
+    background-repeat: no-repeat;
+    border-style: solid;
+    border-color: lightgray;
+    border-width: 1px;
+    border-radius: 6px;
+}
+.message-submit input:hover {
+    border-color: grey;
+    background-color: #c8c8dc;
+    cursor: pointer;
 }
 /*настройка выпадашки*/
 .mt-menu {
@@ -112,14 +304,15 @@ ul, ol {
 }
 .grid-line[data-active="true"] {
     border-top-style: outset;
-    border-top-width: 1px;
-    border-top-color: black;
+    border-top-width: 2px;
+    border-top-color: transparent;
     border-bottom-style: outset;
-    border-bottom-width: 1px;
-    border-bottom-color: black;
+    border-bottom-width: 2px;
+    border-bottom-color: transparent;
     border-right-style: outset;
-    border-right-width: 1px;
-    border-right-color: black;
+    border-right-width: 2px;
+    border-right-color: transparent;
+    box-shadow: inset 0 0 20px;
 }
 .archive-false {
     color: black;
@@ -217,7 +410,7 @@ ul, ol {
 .priority-extra > span {
     background-color: red;
 }
-.status-acquaintance {
+.status-usual {
     background-color: white;
     text-decoration: none;
 }
@@ -226,15 +419,15 @@ ul, ol {
     text-decoration: line-through;
 }
 .status-accepted {
-    background-color: gainsboro;
+    background-color: #CCFFFF;
     text-decoration: none;
 }
 .status-completed {
-    background-color: lightgreen;
+    background-color: #99FF99;
     text-decoration: none;
 }
-.status-approved {
-    background-color: lightskyblue;
+.status-confirmed {
+    background-color: #99CCFF;
     text-decoration: none;
 }
 .cover {
@@ -248,20 +441,63 @@ ul, ol {
     font-weight: bold;
 }
 /*настройка тулбара*/
-.toolbar > .toolbar-button {
+.toolbar > .more div:nth-of-type(1), .ruler > .more div:nth-of-type(1) {
+    height: 40px;
+    width: 40px;
+    background-color: white;
+    color: white;
+    margin: 1px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    border-style: solid;
+    border-color: lightgray;
+    border-width: 1px;
+    border-radius: 6px;
+}
+.toolbar > .more div:nth-of-type(1):hover, .ruler > .more div:nth-of-type(1):hover {
+    height: 40px;
+    width: 40px;
+    background-color: #c8c8dc;
+    color: #c8c8dc;
+    margin: 1px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    border-style: solid;
+    border-color: grey;
+    border-width: 1px;
+    border-radius: 6px;
+}
+.toolbar > .toolbar-button, .ruler > .toolbar-button {
     display: inline-block;
     padding: 15px 40px 5px 5px;
-    margin: 2px;
-    background-color: black;
-    color: white;
+    margin: 1px;
+    background-color: white;
+    color: #323232;
     background-repeat: no-repeat;
     background-position: right center;
+    border-style: solid;
+    border-color: lightgray;
+    border-width: 1px;
+    border-radius: 6px;
+
 }
 .toolbar > .toolbar-button:hover {
     cursor: pointer;
+    background-color: #c8c8dc;
+    color: black;
+    border-color: grey;
 }
 .more > .toolbar-button {
     display: block;
+}
+@media all and (max-width: 599px) {
+    .toolbar > .toolbar-button > span, .ruler > .toolbar-button > span {
+        display: none;
+    }
+    .toolbar > .toolbar-button, .ruler > .toolbar-button {
+        height: 20px;
+        background-position: center center;
+    }
 }
 /*настройка вида переписки*/
 .messages-list div {
@@ -332,14 +568,14 @@ ul, ol {
     border-bottom-color: transparent;
 }
 .tab-bar li[tab-active="true"] {
-    background-color: white;
+    background-color: lavender;
     border-color: black;
-    border-bottom-color: white;
+    border-bottom-color: lavender;
 }
 .tab-bar li[tab-active="true"]:hover {
     cursor: default;
 }
-@media all and (max-width: 799px) {
+@media all and (max-width: 899px) {
     .tab-name {
         display: none;
     }

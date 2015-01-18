@@ -44,105 +44,243 @@
   background-image: url(../img/close_block24hover.png); }
 
 .toolbar > .toolbar-button[btn-id="t-new"] {
-  background-image: url(../t-icons/add-b-w-24.png); }
+  background-image: url(../t-icons/plus-p.png); }
 
 .toolbar > .toolbar-button[btn-id="t-new"]:hover {
-  background-image: url(../t-icons/add-w-g-24.png); }
+  background-image: url(../t-icons/plus-p-h.png); }
 
 .toolbar > .toolbar-button[btn-id="t-archive"] {
-  background-image: url(../t-icons/archive-b-w-24.png); }
+  background-image: url(../t-icons/archive-p.png); }
 
 .toolbar > .toolbar-button[btn-id="t-archive"]:hover {
-  background-image: url(../t-icons/archive-w-b-24.png); }
+  background-image: url(../t-icons/archive-p-h.png); }
 
 .toolbar > .toolbar-button[btn-id="t-return"] {
-  background-image: url(../t-icons/unpack-b-w-24.png); }
+  background-image: url(../t-icons/unpack-p.png); }
 
 .toolbar > .toolbar-button[btn-id="t-return"]:hover {
-  background-image: url(../t-icons/unpack-w-b-24.png); }
+  background-image: url(../t-icons/unpack-p-h.png); }
 
 .toolbar > .toolbar-button[btn-id="t-delete"] {
-  background-image: url(../t-icons/del-b-dark-24.png); }
+  background-image: url(../t-icons/delete-p.png); }
 
 .toolbar > .toolbar-button[btn-id="t-delete"]:hover {
-  background-image: url(../t-icons/del-w-red-24.png); }
+  background-image: url(../t-icons/delete-p-h.png); }
 
 .toolbar > .toolbar-button[btn-id="t-restore"] {
-  background-image: url(../t-icons/restore-b-w-24.png); }
+  background-image: url(../t-icons/restore-p.png); }
 
 .toolbar > .toolbar-button[btn-id="t-restore"]:hover {
-  background-image: url(../t-icons/restore-w-b-24.png); }
+  background-image: url(../t-icons/restore-p-h.png); }
 
 .toolbar > .toolbar-button[btn-id="t-edit"] {
-  background-image: url(../t-icons/edit-b-w-24.png); }
+  background-image: url(../t-icons/edit-p.png); }
 
 .toolbar > .toolbar-button[btn-id="t-edit"]:hover {
-  background-image: url(../t-icons/edit-w-b-24.png); }
+  background-image: url(../t-icons/edit-p-h.png); }
 
 .toolbar > .toolbar-button[btn-id="t-begin"] {
-  background-image: url(../t-icons/play-b-w-24.png); }
+  background-image: url(../t-icons/play-p.png); }
 
 .toolbar > .toolbar-button[btn-id="t-begin"]:hover {
-  background-image: url(../t-icons/play-w-g-24.png); }
+  background-image: url(../t-icons/play-p-h.png); }
 
 .toolbar > .toolbar-button[btn-id="t-stop"] {
-  background-image: url(../t-icons/stop-b-w-24.png); }
+  background-image: url(../t-icons/stop-p.png); }
 
 .toolbar > .toolbar-button[btn-id="t-stop"]:hover {
-  background-image: url(../t-icons/stop-w-b-24.png); }
+  background-image: url(../t-icons/stop-p-h.png); }
 
 .toolbar > .toolbar-button[btn-id="t-revoke"] {
-  background-image: url(../t-icons/reject-w-24.png); }
+  background-image: url(../t-icons/reject-p.png); }
 
 .toolbar > .toolbar-button[btn-id="t-revoke"]:hover {
-  background-image: url(../t-icons/reject-b-24.png); }
+  background-image: url(../t-icons/reject-p-h.png); }
 
 .toolbar > .toolbar-button[btn-id="t-reject"] {
-  background-image: url(../t-icons/reject-w-24.png); }
+  background-image: url(../t-icons/reject-p.png); }
 
 .toolbar > .toolbar-button[btn-id="t-reject"]:hover {
-  background-image: url(../t-icons/reject-b-24.png); }
+  background-image: url(../t-icons/reject-p-h.png); }
 
 .toolbar > .toolbar-button[btn-id="t-force"] {
-  background-image: url(../t-icons/force-w-24.png); }
+  background-image: url(../t-icons/force-p.png); }
 
 .toolbar > .toolbar-button[btn-id="t-force"]:hover {
-  background-image: url(../t-icons/force-b-24.png); }
+  background-image: url(../t-icons/force-p-h.png); }
 
 .toolbar > .toolbar-button[btn-id="t-complete"] {
-  background-image: url(../t-icons/check-b-w-24.png); }
+  background-image: url(../t-icons/check-p.png); }
 
 .toolbar > .toolbar-button[btn-id="t-complete"]:hover {
-  background-image: url(../t-icons/check-w-g-24.png); }
+  background-image: url(../t-icons/check-p-h.png); }
 
 .toolbar > .toolbar-button[btn-id="t-redo"] {
-  background-image: url(../t-icons/delcheck-b-w-24.png); }
+  background-image: url(../t-icons/delcheck-p.png); }
 
 .toolbar > .toolbar-button[btn-id="t-redo"]:hover {
-  background-image: url(../t-icons/delcheck-w-r-24.png); }
+  background-image: url(../t-icons/delcheck-p-h.png); }
 
 .toolbar > .toolbar-button[btn-id="t-confirm"] {
-  background-image: url(../t-icons/confirm-b-w-24.png); }
+  background-image: url(../t-icons/confirm-p.png); }
 
 .toolbar > .toolbar-button[btn-id="t-confirm"]:hover {
-  background-image: url(../t-icons/confirm-w-s-24.png); }
+  background-image: url(../t-icons/confirm-p-h.png); }
 
 .toolbar > .toolbar-button[btn-id="t-notconfirm"] {
-  background-image: url(../t-icons/quest-b-w-24.png); }
+  background-image: url(../t-icons/quest-p.png); }
 
 .toolbar > .toolbar-button[btn-id="t-notconfirm"]:hover {
-  background-image: url(../t-icons/quest-w-g-24.png); }
+  background-image: url(../t-icons/quest-p-h.png); }
 
 .toolbar > .toolbar-button[btn-id="t-savetask"] {
-  background-image: url(../t-icons/cloud-b-w-24.png); }
+  background-image: url(../t-icons/cloud-p.png); }
 
 .toolbar > .toolbar-button[btn-id="t-savetask"]:hover {
-  background-image: url(../t-icons/cloud-w-b-24.png); }
+  background-image: url(../t-icons/cloud-p-h.png); }
 
 .toolbar > .toolbar-button[btn-id="t-canceledit"] {
-  background-image: url(../t-icons/cancel-b-w-24.png); }
+  background-image: url(../t-icons/canceledit-p.png); }
 
 .toolbar > .toolbar-button[btn-id="t-canceledit"]:hover {
-  background-image: url(../t-icons/cancel-w-b-24.png); }
+  background-image: url(../t-icons/canceledit-p-h.png); }
+
+.toolbar > .more div:nth-of-type(1), .ruler > .more div:nth-of-type(1) {
+  background-image: url(../t-icons/dots-l-24.png); }
+
+.toolbar > .more div:nth-of-type(1):hover, .ruler > .more div:nth-of-type(1):hover {
+  background-image: url(../t-icons/dots-b-24.png); }
+
+@media all and (max-width: 599px) {
+  .toolbar > .toolbar-button[btn-id="t-new"] {
+    background-image: url(../t-icons/plus-s.png); }
+
+  .toolbar > .toolbar-button[btn-id="t-new"]:hover {
+    background-image: url(../t-icons/plus-s-h.png); }
+
+  .toolbar > .toolbar-button[btn-id="t-archive"] {
+    background-image: url(../t-icons/archive-s.png); }
+
+  .toolbar > .toolbar-button[btn-id="t-archive"]:hover {
+    background-image: url(../t-icons/archive-s-h.png); }
+
+  .toolbar > .toolbar-button[btn-id="t-return"] {
+    background-image: url(../t-icons/unpack-s.png); }
+
+  .toolbar > .toolbar-button[btn-id="t-return"]:hover {
+    background-image: url(../t-icons/unpack-s-h.png); }
+
+  .toolbar > .toolbar-button[btn-id="t-delete"] {
+    background-image: url(../t-icons/delete-s.png); }
+
+  .toolbar > .toolbar-button[btn-id="t-delete"]:hover {
+    background-image: url(../t-icons/delete-s-h.png); }
+
+  .toolbar > .toolbar-button[btn-id="t-restore"] {
+    background-image: url(../t-icons/restore-s.png); }
+
+  .toolbar > .toolbar-button[btn-id="t-restore"]:hover {
+    background-image: url(../t-icons/restore-s-h.png); }
+
+  .toolbar > .toolbar-button[btn-id="t-edit"] {
+    background-image: url(../t-icons/edit-s.png); }
+
+  .toolbar > .toolbar-button[btn-id="t-edit"]:hover {
+    background-image: url(../t-icons/edit-s-h.png); }
+
+  .toolbar > .toolbar-button[btn-id="t-begin"] {
+    background-image: url(../t-icons/play-s.png); }
+
+  .toolbar > .toolbar-button[btn-id="t-begin"]:hover {
+    background-image: url(../t-icons/play-s-h.png); }
+
+  .toolbar > .toolbar-button[btn-id="t-stop"] {
+    background-image: url(../t-icons/stop-s.png); }
+
+  .toolbar > .toolbar-button[btn-id="t-stop"]:hover {
+    background-image: url(../t-icons/stop-s-h.png); }
+
+  .toolbar > .toolbar-button[btn-id="t-revoke"] {
+    background-image: url(../t-icons/reject-s.png); }
+
+  .toolbar > .toolbar-button[btn-id="t-revoke"]:hover {
+    background-image: url(../t-icons/reject-s-h.png); }
+
+  .toolbar > .toolbar-button[btn-id="t-reject"] {
+    background-image: url(../t-icons/reject-s.png); }
+
+  .toolbar > .toolbar-button[btn-id="t-reject"]:hover {
+    background-image: url(../t-icons/reject-s-h.png); }
+
+  .toolbar > .toolbar-button[btn-id="t-force"] {
+    background-image: url(../t-icons/force-s.png); }
+
+  .toolbar > .toolbar-button[btn-id="t-force"]:hover {
+    background-image: url(../t-icons/force-s-h.png); }
+
+  .toolbar > .toolbar-button[btn-id="t-complete"] {
+    background-image: url(../t-icons/check-s.png); }
+
+  .toolbar > .toolbar-button[btn-id="t-complete"]:hover {
+    background-image: url(../t-icons/check-s-h.png); }
+
+  .toolbar > .toolbar-button[btn-id="t-redo"] {
+    background-image: url(../t-icons/delcheck-s.png); }
+
+  .toolbar > .toolbar-button[btn-id="t-redo"]:hover {
+    background-image: url(../t-icons/delcheck-s-h.png); }
+
+  .toolbar > .toolbar-button[btn-id="t-confirm"] {
+    background-image: url(../t-icons/confirm-s.png); }
+
+  .toolbar > .toolbar-button[btn-id="t-confirm"]:hover {
+    background-image: url(../t-icons/confirm-s-h.png); }
+
+  .toolbar > .toolbar-button[btn-id="t-notconfirm"] {
+    background-image: url(../t-icons/quest-s.png); }
+
+  .toolbar > .toolbar-button[btn-id="t-notconfirm"]:hover {
+    background-image: url(../t-icons/quest-s-h.png); }
+
+  .toolbar > .toolbar-button[btn-id="t-savetask"] {
+    background-image: url(../t-icons/cloud-s.png); }
+
+  .toolbar > .toolbar-button[btn-id="t-savetask"]:hover {
+    background-image: url(../t-icons/cloud-s-h.png); }
+
+  .toolbar > .toolbar-button[btn-id="t-canceledit"] {
+    background-image: url(../t-icons/canceledit-s.png); }
+
+  .toolbar > .toolbar-button[btn-id="t-canceledit"]:hover {
+    background-image: url(../t-icons/canceledit-s-h.png); } }
+.show-full-search {
+  background-image: url(../img/funnel.png); }
+
+.show-full-search:hover {
+  background-image: url(../img/funnel-h.png); }
+
+.search-submit input {
+  background-image: url(../img/magnifier.png); }
+
+.search-submit input:hover {
+  background-image: url(../img/magnifier-h.png); }
+
+.show-full-add {
+  background-image: url(../img/form.png); }
+
+.show-full-add:hover {
+  background-image: url(../img/form-h.png); }
+
+.add-submit input {
+  background-image: url(../t-icons/cloud-s.png); }
+
+.add-submit input:hover {
+  background-image: url(../t-icons/cloud-s-h.png); }
+
+.message-submit input {
+  background-image: url(../t-icons/send.png); }
+
+.message-submit input:hover {
+  background-image: url(../t-icons/send-h.png); }
 
 /*# sourceMappingURL=icons.css.map */
