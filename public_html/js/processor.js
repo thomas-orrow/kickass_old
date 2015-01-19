@@ -23,7 +23,9 @@ Vars.dotsSize;
 Vars.toolbarSize;
 Vars.lineStatus;
 Vars.lineParty;
+Vars.numberOfFiles = 1;
 Vars.firstClick = [true, true, true, true, true];
+Vars.click = [true, true, true];
 Vars.messageFormStatus = new Array();
 //Vars.messageFormText = new Array();
 var User = new Object();
@@ -783,6 +785,75 @@ function showTask(taskId) {
     $('.record').children('p').empty();// заполнение темы рекорда
     $('.record').children('p').append(recordText);
 }
+function showFullSearch() {
+    $('.show-full-search').on('click', function () {
+        $('.full-search').css('display', 'block');
+        $('.show-full-search').css('display', 'none');
+        $('.hide-full-search').css('display', 'inline-block');
+    });
+}
+function hideFullSearch() {
+    $('.full-search').css('display', 'none');
+    $('.show-full-search').css('display', 'inline-block');
+    $('.hide-full-search').css('display', 'none');
+}
+function showFullAddTask() {
+    $('.show-full-add').on('click', function () {
+        $('.full-add').css('display', 'block');
+        $('.show-full-add').css('display', 'none');
+        $('.hide-full-add').css('display', 'inline-block');
+    });
+}
+function hideFullAddTask() {
+    $('.full-add').css('display', 'none');
+    $('.show-full-add').css('display', 'inline-block');
+    $('.hide-full-add').css('display', 'none');
+    Vars.click[1] = true;
+    while (Vars.numberOfFiles > 1) {
+        $('.add-attachments div:nth-of-type(3)').remove();
+        Vars.numberOfFiles--;
+    }
+}
+function clickHideFullAddTask() {
+    $('.hide-full-add').on('click', function () {
+        hideFullAddTask();
+    });
+}
+function newAttachment() {
+    Vars.numberOfFiles++;
+    var addFileCode = '                                <div class=\"add-file\">\n                                    <span class=\"remove-file\"><\/span><input type=\"file\" name=\"task-attach-' + Vars.numberOfFiles + '\" id=\"addfile' + Vars.numberOfFiles + '\">\n                                <\/div>\n';
+    $('.add-attachments').append(addFileCode);
+}
+function clickMoreFiles() {
+    $('.new-attachment').on('click', function () {
+        if (Vars.numberOfFiles < 10) {
+            newAttachment();
+        }
+    });
+}
+function removeAttachment() {
+    $('.add-attachments').on('click', '.remove-file', function () {
+        $(this).closest(".add-file").remove();
+        Vars.numberOfFiles--;
+    });
+}
+function textareaAutoresize() {
+    $('.new-task-text').autoResize();
+    $('.new-message').autoResize();
+}
+function clickHideFullSearch() {
+    $('.hide-full-search').on('click', function () {
+        hideFullSearch();
+    });
+}
+function clickMissFullSearch() {
+    $(document).click(function (event) {
+        if ($(event.target).closest(".panel-find").length)
+            return;
+        hideFullSearch();
+        event.stopPropagation();
+    });
+}
 function showAddMessageLine() {
     $('.message-add').css('display', 'block');
     $('.full-message').css('display', 'none');
@@ -798,13 +869,20 @@ function showAddMessageForm() {
         setHeights(newSizeOfContainer());
         Vars.messageFormStatus[Vars.activeTab] = 'form';
     });
+    Vars.click[2] = false;
 }
 function hideAddMessageForm() {
-    $('.message-form').focusout(function () {
-        $('.full-message').css('display', 'none');
-        $('.new-message').css('height', '32px');
-        setHeights(newSizeOfContainer());
-        Vars.messageFormStatus[Vars.activeTab] = 'line';
+    $('.full-message').css('display', 'none');
+    $('.new-message').css('height', '32px');
+    setHeights(newSizeOfContainer());
+    Vars.messageFormStatus[Vars.activeTab] = 'line';
+}
+function clickMissAddMessageForm() {
+    $(document).click(function (event) {
+        if ($(event.target).closest(".message-add").length)
+            return;
+        hideAddMessageForm();
+        event.stopPropagation();
     });
 }
 function hideAddMessageLine() {
@@ -814,6 +892,17 @@ function hideAddMessageLine() {
     $('.new-message').css('display', 'none');
     setHeights(newSizeOfContainer());
     Vars.messageFormStatus[Vars.activeTab] = 'none';
+}
+function showPersonalBox() {
+    $("#message-to-name").change(function () {
+        if ($("#message-to-name").val() === 'userid_0') {
+            $('#personal-message').css('display', 'none');
+            $('.label[data-txtid="308"]').css('display', 'none');
+        } else {
+            $('#personal-message').css('display', 'inline');
+            $('.label[data-txtid="308"]').css('display', 'inline');
+        }
+    });
 }
 function showMessages(recId) {
     var mesCode = '';
@@ -1309,6 +1398,7 @@ function clickTab() {
             });
             $(this).attr('tab-active', 'true');
             var tabName = $(this).attr('tab-id');
+            hideFullAddTask();
             requestCommutator('getList', tabName, 1);
             $('.grid-box').empty();
             showGrid(tabName, 1);
@@ -1359,6 +1449,14 @@ function clickTab() {
         }
     });
 }
+//Toolbar clicks
+function clickToolbarNew() {
+    $('.toolbar').on('click', '.toolbar-button[btn-id="t-new"]', function () {
+        $('.full-add').css('display', 'block');
+        $('.show-full-add').css('display', 'none');
+        $('.hide-full-add').css('display', 'inline-block');
+    });
+}
 $(document).ready(function () {
     Vars.initialHeight = Vars.myWindow.clientHeight;
     Vars.currentHeight = Vars.initialHeight;
@@ -1388,7 +1486,17 @@ $(document).ready(function () {
     showMenu();
     hideMenu();
     showAddMessageForm();
-    hideAddMessageForm();
+    clickMissAddMessageForm();
+    showFullSearch();
+    clickHideFullSearch();
+    clickMissFullSearch();
+    showFullAddTask();
+    clickHideFullAddTask();
+    clickToolbarNew();
+    clickMoreFiles();
+    textareaAutoresize();
+    removeAttachment();
+    showPersonalBox();
 });
 
 

@@ -9,6 +9,7 @@
         <link href="css/main.css" rel="stylesheet" type="text/css">
         <link href="favicon.ico" rel="shortcut icon" type="image/x-icon">
         <script src="js/jquery-1.11.2.min.js" type="text/javascript"></script>
+        <script src="js/txt-autoresize.js" type="text/javascript"></script>
         <script src="js/jquery.cookie.js" type="text/javascript"></script>
         <script src="js/data.js" type="text/javascript"></script>
         <script src="js/lang_en.js" type="text/javascript"></script>
@@ -80,32 +81,162 @@
             </div>
             <div class="panel-container">
                 <div class="panel-add">
-                    <form class="add-form" action="#" method="post">
+                    <form class="add-form" action="#" method="post" enctype="multipart/form-data">
                         <div class="quick-add">
-                            <input type="text" value="new task">
+                            <input type="text" value="" name="new-task-subject" placeholder="new task">
                         </div>
                         <div class="add-submit">
                             <input type="submit" value="">
                         </div>
                         <div class="show-full-add">
                         </div>
+                        <div class="hide-full-add">
+                        </div>
                         <div class="full-add">
-                            <p>тут разные контролы расширенного добавления</p>
+                            <textarea class="new-task-text" name="new-task-text"></textarea>
+                            <div class="add-task-options">
+                                <div>
+                                    <label class="label txt" for="task-from-name" data-txtid="334"></label>
+                                    <select name="task-from-name">
+                                        <option value="userid_1" class="txt" data-txtid="335"></option>
+                                        <option value="userid_2">Иванов А.А.</option>
+                                        <option value="userid_3">Петров В.В.</option>
+                                        <option value="userid_4">Сидоров П.П.</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="label txt" for="task-to-name" data-txtid="320"></label>
+                                    <select name="task-to-name">
+                                        <option value="userid_1" class="txt" data-txtid="321"></option>
+                                        <option value="userid_2">Иванов А.А.</option>
+                                        <option value="userid_3">Петров В.В.</option>
+                                        <option value="userid_4">Сидоров П.П.</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="label txt" for="task-deadline" data-txtid="322"></label>
+                                    <input type="date" name="task-deadline">
+                                </div>
+                                <div>
+                                    <label class="label txt" for="task-priority" data-txtid="323"></label>
+                                    <select name="task-priority">
+                                        <option value="priority_1" class="txt" data-txtid="324"></option>
+                                        <option value="priority_2" selected class="txt" data-txtid="325"></option>
+                                        <option value="priority_3" class="txt" data-txtid="326"></option>
+                                        <option value="priority_4" class="txt" data-txtid="327"></option>
+                                        <option value="priority_5" class="txt" data-txtid="328"></option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label for="add-project-select" class="label txt" data-txtid="336"></label>
+                                    <select name="add-project-select">
+                                        <option value="userid_1" class="txt" data-txtid="337"></option>
+                                        <option value="userid_2">Иванов А.А.</option>
+                                        <option value="userid_3">Петров В.В.</option>
+                                        <option value="userid_4">Сидоров П.П.</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label for="add-client-select" class="label txt" data-txtid="338"></label>
+                                    <select name="add-client-select">
+                                        <option value="userid_1" class="txt" data-txtid="339"></option>
+                                        <option value="userid_2">Иванов А.А.</option>
+                                        <option value="userid_3">Петров В.В.</option>
+                                        <option value="userid_4">Сидоров П.П.</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="add-attachments">
+                                <p class="txt" data-txtid="329"></p>
+                                <div class="new-attachment txt" data-txtid="340">
+                                </div>
+                                <div class="add-file">
+                                    <input type="file" name="task-attach-1" id="addfile1">
+                                </div>
+                            </div>
                         </div>
                     </form>
                 </div>
                 <div class="panel-find">
                     <form class="search-form" action="#" method="get">
                         <div class="quck-search">
-                            <input type="text" value="find">
+                            <input type="text" value="" placeholder="find">
                         </div>
                         <div class="search-submit">
                             <input type="submit" value="">
                         </div>
                         <div class="show-full-search">
                         </div>
+                        <div class="hide-full-search">
+                        </div>
                         <div class="full-search">
-                            <p>тут разные контролы расширенного поиска</p>
+                            <div class="search-selectors">
+                                <div>
+                                    <label for="from-select" class="label txt" data-txtid="309"></label>
+                                    <select name="from-select">
+                                        <option value="userid_1" class="txt" data-txtid="310"></option>
+                                        <option value="userid_2">Иванов А.А.</option>
+                                        <option value="userid_3">Петров В.В.</option>
+                                        <option value="userid_4">Сидоров П.П.</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label for="to-select" class="label txt" data-txtid="311"></label>
+                                    <select name="to-select">
+                                        <option value="userid_1" class="txt" data-txtid="312"></option>
+                                        <option value="userid_2">Иванов А.А.</option>
+                                        <option value="userid_3">Петров В.В.</option>
+                                        <option value="userid_4">Сидоров П.П.</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label for="priority-select" class="label txt" data-txtid="313"></label>
+                                    <select name="priority-select">
+                                        <option value="userid_1" class="txt" data-txtid="314"></option>
+                                        <option value="userid_2">Иванов А.А.</option>
+                                        <option value="userid_3">Петров В.В.</option>
+                                        <option value="userid_4">Сидоров П.П.</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label for="status-select" class="label txt" data-txtid="315"></label>
+                                    <select name="status-select">
+                                        <option value="userid_1" class="txt" data-txtid="316"></option>
+                                        <option value="userid_2">Иванов А.А.</option>
+                                        <option value="userid_3">Петров В.В.</option>
+                                        <option value="userid_4">Сидоров П.П.</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label for="search-project-select" class="label txt" data-txtid="330"></label>
+                                    <select name="search-project-select">
+                                        <option value="userid_1" class="txt" data-txtid="331"></option>
+                                        <option value="userid_2">Иванов А.А.</option>
+                                        <option value="userid_3">Петров В.В.</option>
+                                        <option value="userid_4">Сидоров П.П.</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label for="search-client-select" class="label txt" data-txtid="332"></label>
+                                    <select name="search-client-select">
+                                        <option value="userid_1" class="txt" data-txtid="333"></option>
+                                        <option value="userid_2">Иванов А.А.</option>
+                                        <option value="userid_3">Петров В.В.</option>
+                                        <option value="userid_4">Сидоров П.П.</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="date-selectors">
+                                <p class="txt" data-txtid="317"></p>
+                                <div>
+                                    <label for="start-date-select" class="label txt" data-txtid="318"></label>
+                                    <input type="date" name="start-date-select">
+                                </div>
+                                <div>
+                                    <label for="end-date-select" class="label txt" data-txtid="319"></label>
+                                    <input type="date" name="end-date-select">
+                                </div>
+                            </div>
                         </div>
                     </form>
                 </div>
@@ -140,18 +271,18 @@
                     <div class="message-add">
                         <form class="message-form" action="#" method="post">
                             <div class="add-text">
-                                <textarea class="new-message txt" name="new-mesage" data-txtid="303"></textarea>
+                                <textarea class="new-message" name="new-message" placeholder="new message"></textarea>
                             </div>
                             <div class="full-message">
                                 <div class="message-submit">
                                     <input type="submit" value="">
                                 </div>
                                 <label class="label txt" for="message-to-name" data-txtid="306"></label>
-                                <select name="message-to-name">
-                                    <option value="userid_1" class="txt" data-txtid="307"></option>
-                                    <option value="userid_2">Иванов А.А.</option>
-                                    <option value="userid_3">Петров В.В.</option>
-                                    <option value="userid_4">Сидоров П.П.</option>
+                                <select name="message-to-name" id="message-to-name">
+                                    <option value="userid_0" class="txt" data-txtid="307"></option>
+                                    <option value="userid_1">Иванов А.А.</option>
+                                    <option value="userid_2">Петров В.В.</option>
+                                    <option value="userid_3">Сидоров П.П.</option>
                                 </select>
                                 <input type="checkbox" name="personal-message" id="personal-message" value="unchecked" >&nbsp;<label class="label txt" data-txtid="308" for="personal-message"></label>
                             </div>

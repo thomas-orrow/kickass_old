@@ -259,6 +259,12 @@
 .show-full-search:hover {
   background-image: url(../img/magnifier-plus-h.png); }
 
+.hide-full-search {
+  background-image: url(../img/magnifier-minus.png); }
+
+.hide-full-search:hover {
+  background-image: url(../img/magnifier-minus-h.png); }
+
 .search-submit input {
   background-image: url(../img/magnifier.png); }
 
@@ -271,6 +277,12 @@
 .show-full-add:hover {
   background-image: url(../img/form-h.png); }
 
+.hide-full-add {
+  background-image: url(../img/form-hide.png); }
+
+.hide-full-add:hover {
+  background-image: url(../img/form-hide-h.png); }
+
 .add-submit input {
   background-image: url(../t-icons/save.png); }
 
@@ -282,5 +294,11 @@
 
 .message-submit input:hover {
   background-image: url(../t-icons/send-h.png); }
+
+.remove-file {
+  background-image: url(../img/minus.png); }
+
+.remove-file:hover {
+  background-image: url(../img/minus-h.png); }
 
 /*# sourceMappingURL=icons.css.map */
