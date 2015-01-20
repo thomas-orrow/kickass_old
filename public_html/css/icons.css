@@ -301,4 +301,10 @@
 .remove-file:hover {
   background-image: url(../img/minus-h.png); }
 
+.add-close {
+  background-image: url(../img/close_block24.png); }
+
+.add-close:hover {
+  background-image: url(../img/close_block24hover.png); }
+
 /*# sourceMappingURL=icons.css.map */

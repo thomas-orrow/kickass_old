@@ -25,7 +25,6 @@ Vars.lineStatus;
 Vars.lineParty;
 Vars.numberOfFiles = 1;
 Vars.firstClick = [true, true, true, true, true];
-Vars.click = [true, true, true];
 Vars.messageFormStatus = new Array();
 //Vars.messageFormText = new Array();
 var User = new Object();
@@ -57,22 +56,82 @@ function showMenu() {
     });
 }
 function hideMenu() {
-    $(document).on('click.myEvent', function (e) {
+    $(document).click(function (event) {
         for (var i = 0; i < Vars.firstClick.length; i++) {
             var menu = $('.menu' + i);
-            //	то проверяем открыто ли меню
             if (menu.css('display') === 'block') {
-                //    если открыто i-е меню и клик не первый и клик не в i-м меню, то скрыть i-е меню, выйти из цикла
-                if ((!Vars.firstClick[i]) && ($(e.target).closest('menu').length === 0)) {
+                if ((!Vars.firstClick[i]) && ($(event.target).closest(menu).length === 0)) {
                     menu.hide();
                     Vars.firstClick[i] = true;
-                    break;
+                    event.stopPropagation();
                 } else {
-                    //  если же меню открыто, но либо первый клик, либо клик не снаружи от меню, то ставим, что клик не первый
                     Vars.firstClick[i] = false;
                 }
             }
         }
+    });
+}
+function showFilter() {
+    $('.txt[data-href="show-filter"]').on('click', function () {
+        if ($('.panel-find').css('display') === 'none') {
+            if ($('.panel-add').css('display') === 'none') {
+                $('.panel-container').css('display', 'block');
+            }
+            $('.panel-find').css('display', 'inline-block');
+            $('.txt[data-href="show-filter"]').css('display', 'none');
+            $('.txt[data-href="hide-filter"]').css('display', 'block');
+
+        }
+    });
+}
+function showQuickAdd() {
+    if ($('.panel-add').css('display') === 'none') {
+        if ($('.panel-find').css('display') === 'none') {
+            $('.panel-container').css('display', 'block');
+        }
+        $('.panel-add').css('display', 'inline-block');
+        $('.txt[data-href="show-add"]').css('display', 'none');
+        $('.txt[data-href="hide-add"]').css('display', 'block');
+        $('.add-close').css('display', 'none');
+    }
+}
+function clickShowAdd() {
+    $('.txt[data-href="show-add"]').on('click', function () {
+        showQuickAdd();
+    });
+}
+function hideFilter() {
+    $('.txt[data-href="hide-filter"]').on('click', function () {
+        if ($('.panel-find').css('display') === 'inline-block') {
+            $('.panel-find').css('display', 'none');
+            $('.txt[data-href="hide-filter"]').css('display', 'none');
+            $('.txt[data-href="show-filter"]').css('display', 'block');
+            if ($('.panel-add').css('display') === 'none') {
+                $('.panel-container').css('display', 'none');
+            }
+        }
+    });
+}
+function hideQuickAdd() {
+    if ($('.panel-add').css('display') === 'inline-block') {
+        $('.panel-add').css('display', 'none');
+        $('.txt[data-href="hide-add"]').css('display', 'none');
+        $('.txt[data-href="show-add"]').css('display', 'block');
+        if ($('.panel-find').css('display') === 'none') {
+            $('.panel-container').css('display', 'none');
+        }
+    }
+}
+function clickHideQuickAdd() {
+    $('.txt[data-href="hide-add"]').on('click', function () {
+        hideQuickAdd();
+    });
+}
+function clickCloseAdd() {
+    $('.add-close').on('click', function () {
+        hideFullAddTask();
+        hideQuickAdd();
+        $('.add-close').css('display', 'none');
     });
 }
 // Column pcs
@@ -808,7 +867,6 @@ function hideFullAddTask() {
     $('.full-add').css('display', 'none');
     $('.show-full-add').css('display', 'inline-block');
     $('.hide-full-add').css('display', 'none');
-    Vars.click[1] = true;
     while (Vars.numberOfFiles > 1) {
         $('.add-attachments div:nth-of-type(3)').remove();
         Vars.numberOfFiles--;
@@ -869,7 +927,6 @@ function showAddMessageForm() {
         setHeights(newSizeOfContainer());
         Vars.messageFormStatus[Vars.activeTab] = 'form';
     });
-    Vars.click[2] = false;
 }
 function hideAddMessageForm() {
     $('.full-message').css('display', 'none');
@@ -1452,9 +1509,15 @@ function clickTab() {
 //Toolbar clicks
 function clickToolbarNew() {
     $('.toolbar').on('click', '.toolbar-button[btn-id="t-new"]', function () {
+        if ($('.panel-add').css('display') === 'none') {
+            showQuickAdd();
+            $('.add-close').css('display', 'inline-block');
+            $('.hide-full-add').css('display', 'none');
+        } else {
+            $('.hide-full-add').css('display', 'inline-block');
+        }
         $('.full-add').css('display', 'block');
         $('.show-full-add').css('display', 'none');
-        $('.hide-full-add').css('display', 'inline-block');
     });
 }
 $(document).ready(function () {
@@ -1485,6 +1548,11 @@ $(document).ready(function () {
     showToolbar(Vars.lineStatus, Vars.lineParty);
     showMenu();
     hideMenu();
+    showFilter();
+    clickShowAdd();
+    hideFilter();
+    clickHideQuickAdd();
+    clickCloseAdd();
     showAddMessageForm();
     clickMissAddMessageForm();
     showFullSearch();

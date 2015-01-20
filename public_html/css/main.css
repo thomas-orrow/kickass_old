@@ -68,21 +68,35 @@ html, body {
   display: inline-block; }
 
 .more {
-  float: right; }
+  float: right;
+  margin-right: 10px; }
 
 .panel-container {
+  display: none;
   width: 100%;
   text-align: center; }
 
 .panel-add {
-  display: inline-block;
+  display: none;
   width: 98%;
   margin: 0 1% 0 1%; }
 
+.txt[data-href="show-add"] {
+  display: block; }
+
+.txt[data-href="hide-add"] {
+  display: none; }
+
 .panel-find {
-  display: inline-block;
+  display: none;
   width: 98%;
   margin: 0 1% 0 1%; }
+
+.txt[data-href="show-filter"] {
+  display: block; }
+
+.txt[data-href="hide-filter"] {
+  display: none; }
 
 .tab-container {
   width: 100%; }
@@ -118,15 +132,30 @@ html, body {
 /*---From 780---*/
 @media screen and (min-width: 780px) {
   /*╨┐╨░╨╜╨╡╨╗╤М╨║╨╕ ╨▓ ╤А╤П╨┤*/
+  .panel-container {
+    display: block; }
+
   .panel-add {
     display: inline-block;
     width: 40%;
     margin: 0 1% 0 1%; }
 
+  .txt[data-href="show-add"] {
+    display: none; }
+
+  .txt[data-href="hide-add"] {
+    display: block; }
+
   .panel-find {
     display: inline-block;
     width: 40%;
     margin: 0 1% 0 1%; }
+
+  .txt[data-href="show-filter"] {
+    display: none; }
+
+  .txt[data-href="hide-filter"] {
+    display: block; }
 
   /* Main footer ON */
   .main-wrapper {

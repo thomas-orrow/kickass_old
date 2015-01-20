@@ -29,10 +29,10 @@
                     </div>
                     <div class="mt-menu menu0" data-group="mt_apps">
                         <ul>
-                            <li><a href="#tabs-1" class="txt" data-txtid="2"></a></li>
-                            <li><a href="#tabs-1" class="txt" data-txtid="3"></a></li>
-                            <li><a href="#tabs-2" class="txt" data-txtid="4"></a></li>
-                            <li><a href="#tabs-3" class="txt" data-txtid="5"></a></li>
+                            <li data-href="#tabs-1" class="txt" data-txtid="2"></li>
+                            <li data-href="#tabs-1" class="txt" data-txtid="3"></li>
+                            <li data-href="#tabs-2" class="txt" data-txtid="4"></li>
+                            <li data-href="#tabs-3" class="txt" data-txtid="5"></li>
                         </ul>
                     </div>
                 </div>
@@ -45,9 +45,9 @@
                     </div>
                     <div class="mt-menu menu1" data-group="mt_user">
                         <ul>
-                            <li><a href="#tabs-1" class="txt" data-txtid="9"></a></li>
-                            <li><a href="#tabs-2" class="txt" data-txtid="10"></a></li>
-                            <li><a href="#tabs-3" class="txt" data-txtid="11"></a></li>
+                            <li data-href="#tabs-1" class="txt" data-txtid="9"></li>
+                            <li data-href="#tabs-2" class="txt" data-txtid="10"></li>
+                            <li data-href="#tabs-3" class="txt" data-txtid="11"></li>
                         </ul>
                     </div>
                 </div>
@@ -57,10 +57,12 @@
                     </div>
                     <div class="mt-menu menu2" data-group="mt_menu">
                         <ul>
-                            <li><a href="#tabs-1" class="txt" data-txtid="6"></a></li>
-                            <li><a href="#tabs-1" class="txt" data-txtid="7"></a></li>
-                            <li><a href="#tabs-2" class="txt" data-txtid="8"></a></li>
-                            <li><a href="#tabs-3" class="txt" data-txtid="12"></a></li>
+                            <li data-href="#tabs-1" class="txt" data-txtid="6"></li>
+                            <li data-href="show-filter" class="txt" data-txtid="7"></li>
+                            <li data-href="hide-filter" class="txt" data-txtid="13"></li>
+                            <li data-href="show-add" class="txt" data-txtid="8"></li>
+                            <li data-href="hide-add" class="txt" data-txtid="14"></li>
+                            <li data-href="#tabs-3" class="txt" data-txtid="12"></li>
                         </ul>
                     </div>
                 </div>
@@ -81,6 +83,8 @@
             </div>
             <div class="panel-container">
                 <div class="panel-add">
+                    <div class="add-close">
+                    </div>
                     <form class="add-form" action="#" method="post" enctype="multipart/form-data">
                         <div class="quick-add">
                             <input type="text" value="" name="new-task-subject" placeholder="new task">
